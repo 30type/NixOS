@@ -101,41 +101,44 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  wget
-  git
-  powertop 
-  kitty
-  vesktop
-  vimPlugins.catppuccin-vim
-  vimPlugins.vimtex
-  vimPlugins.vim-tmux
-  vimPlugins.vim-startify
-  vimPlugins.vim-sensible
-  home-manager
-  yazi
-  tmux
-  tmuxPlugins.weather
-  tmuxPlugins.vim-tmux-navigator
-  fish
-  fishPlugins.tide
-  fishPlugins.sponge
-  fishPlugins.fzf-fish
-  fzf
-  fastfetch
+  bsdgames
   catppuccin
   catppuccin-grub
-  catppuccinifier-gui
   catppuccin-gtk
+  catppuccinifier-gui
+  fastfetch
+  fish
+  fishPlugins.fzf-fish
+  fishPlugins.sponge
+  fishPlugins.tide
+  fzf
+  git
+  home-manager
+  kitty
+  powertop 
+  tmux
+  tmuxPlugins.vim-tmux-navigator
+  tmuxPlugins.weather
+  vesktop
+  vim 
+  vimPlugins.catppuccin-vim
+  vimPlugins.vim-sensible
+  vimPlugins.vim-startify
+  vimPlugins.vim-tmux
+  vimPlugins.vimtex
+  wget
+  yazi
   ];
 
   fonts.packages = with pkgs; [
     (nerdfonts.override { fonts = [ "JetBrainsMono" ];
   })
+    liberation_ttf
+    meslo-lg
+    meslo-lgs-nf
     noto-fonts
     noto-fonts-cjk-sans
     noto-fonts-emoji
-    liberation_ttf
   ];
 
   fonts.enableDefaultPackages = true;
