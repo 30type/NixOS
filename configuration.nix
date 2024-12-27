@@ -23,6 +23,7 @@
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
+  
   # Enable networking
   networking.networkmanager.enable = true;
 
@@ -101,7 +102,6 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  bsdgames
   catppuccin
   catppuccin-grub
   catppuccin-gtk
@@ -111,10 +111,14 @@
   fishPlugins.fzf-fish
   fishPlugins.sponge
   fishPlugins.tide
+  font-manager
   fzf
+  gimp
   git
   home-manager
   kitty
+  neovim
+  neovim-gtk
   powertop 
   tmux
   tmuxPlugins.vim-tmux-navigator
@@ -122,13 +126,41 @@
   vesktop
   vim 
   vimPlugins.catppuccin-vim
+  vimPlugins.luasnip-latex-snippets-nvim
+  vimPlugins.nvim-treesitter-parsers.latex
   vimPlugins.vim-sensible
   vimPlugins.vim-startify
   vimPlugins.vim-tmux
   vimPlugins.vimtex
+  vimPlugins.zephyr-nvim
   wget
   yazi
   ];
+
+  powerManagement.enable = true;
+  services.thermald.enable = true;
+  services.power-profiles-daemon.enable = false;
+
+  services.tlp = {
+      enable = true;
+      settings = {
+        CPU_SCALING_GOVERNOR_ON_AC = "performance";
+        CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+
+        CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
+        CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
+
+        CPU_MIN_PERF_ON_AC = 0;
+        CPU_MAX_PERF_ON_AC = 100;
+        CPU_MIN_PERF_ON_BAT = 0;
+        CPU_MAX_PERF_ON_BAT = 30;
+
+       #Optional helps save long term battery health
+       START_CHARGE_THRESH_BAT0 = 20; # 20 and bellow it starts to charge
+       STOP_CHARGE_THRESH_BAT0 = 85; # 85 and above it stops charging
+
+      };
+  };
 
   fonts.packages = with pkgs; [
     (nerdfonts.override { fonts = [ "JetBrainsMono" ];
@@ -144,6 +176,11 @@
   fonts.enableDefaultPackages = true;
   
   programs.fish.enable = true;
+  
+  programs.fish.shellAliases = {
+    gvim = "nvim-gtk";
+    ls = "ls -la";
+    };
 
   users.defaultUserShell = pkgs.fish;
   # Some programs need SUID wrappers, can be configured further or are
