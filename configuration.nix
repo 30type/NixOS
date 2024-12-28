@@ -99,6 +99,11 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+
+  # Enable catppuccin
+  catppuccin.flavor = "mocha";
+  catppuccin.enable = true;
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
