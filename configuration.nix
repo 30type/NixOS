@@ -25,7 +25,7 @@
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   
-  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-soft.yaml";
+  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-medium.yaml";
   stylix.image = /home/l/.dotfiles/gruvbox-wallpapers/wallpapers/minimalistic/gruvbox-nix.png;
   stylix.enable = true;
   home-manager.extraSpecialArgs = { inherit base16; };  
@@ -96,7 +96,7 @@
   };
 
   # Install firefox.
-  programs.firefox.enable = true;
+  # programs.firefox.enable = true;
 
   # Disable gnome core-utils
   services.gnome.core-utilities.enable = true;
@@ -108,15 +108,12 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
   fastfetch
-  fish
-  fishPlugins.fzf-fish
-  fishPlugins.sponge
-  fishPlugins.tide
   fzf
   gimp
   git
   home-manager
   kitty
+  librewolf
   neovim
   neovim-gtk
   niri
@@ -128,14 +125,18 @@
   vim 
   vimPlugins.luasnip-latex-snippets-nvim
   vimPlugins.nvim-treesitter-parsers.latex
+  vimPlugins.nvim-treesitter-parsers.zathurarc
   vimPlugins.vim-sensible
   vimPlugins.vim-startify
   vimPlugins.vim-tmux
   vimPlugins.vimtex
-  vimPlugins.nvim-treesitter-parsers.zathurarc
   wget
   yazi
   zathura
+  zsh
+  zsh-autocomplete
+  zsh-autosuggestions
+  zsh-powerlevel10k
   ];
 
   powerManagement.enable = true;
@@ -173,15 +174,7 @@
   ];
 
   fonts.enableDefaultPackages = true;
-  
-  programs.fish.enable = true;
-  
-  programs.fish.shellAliases = {
-    vi = "nvim";
-    ls = "ls -la";
-    };
 
-  users.defaultUserShell = pkgs.fish;
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
