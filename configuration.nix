@@ -99,7 +99,7 @@
   programs.firefox.enable = true;
 
   # Disable gnome core-utils
-  services.gnome.core-utilities.enable = false;
+  services.gnome.core-utilities.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -112,7 +112,6 @@
   fishPlugins.fzf-fish
   fishPlugins.sponge
   fishPlugins.tide
-  font-manager
   fzf
   gimp
   git
@@ -120,6 +119,7 @@
   kitty
   neovim
   neovim-gtk
+  niri
   powertop 
   tmux
   tmuxPlugins.vim-tmux-navigator
@@ -164,8 +164,6 @@
   };
 
   fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "JetBrainsMono" ];
-  })
     liberation_ttf
     meslo-lg
     meslo-lgs-nf
@@ -179,7 +177,7 @@
   programs.fish.enable = true;
   
   programs.fish.shellAliases = {
-    gvim = "nvim-gtk";
+    vi = "nvim";
     ls = "ls -la";
     };
 
