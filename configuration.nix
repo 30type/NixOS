@@ -2,12 +2,13 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, base16, ... }:
 
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      inputs.home-manager.nixosModules.home-manager
     ];
 
   home-manager.users.l = import ./home.nix;
@@ -24,6 +25,10 @@
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   
+  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
+  stylix.image = /home/l/.dotfiles/gruvbox-wallpapers/wallpapers/minimalistic/gruvbox-nix.png;
+  stylix.enable = true;
+  home-manager.extraSpecialArgs = { inherit base16; };  
   # Enable networking
   networking.networkmanager.enable = true;
 
@@ -99,18 +104,9 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-
-  # Enable catppuccin
-  catppuccin.flavor = "mocha";
-  catppuccin.enable = true;
-
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  catppuccin
-  catppuccin-grub
-  catppuccin-gtk
-  catppuccinifier-gui
   fastfetch
   fish
   fishPlugins.fzf-fish
@@ -130,16 +126,16 @@
   tmuxPlugins.weather
   vesktop
   vim 
-  vimPlugins.catppuccin-vim
   vimPlugins.luasnip-latex-snippets-nvim
   vimPlugins.nvim-treesitter-parsers.latex
   vimPlugins.vim-sensible
   vimPlugins.vim-startify
   vimPlugins.vim-tmux
   vimPlugins.vimtex
-  vimPlugins.zephyr-nvim
+  vimPlugins.nvim-treesitter-parsers.zathurarc
   wget
   yazi
+  zathura
   ];
 
   powerManagement.enable = true;
