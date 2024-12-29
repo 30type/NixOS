@@ -25,7 +25,7 @@
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   
-  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
+  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-soft.yaml";
   stylix.image = /home/l/.dotfiles/gruvbox-wallpapers/wallpapers/minimalistic/gruvbox-nix.png;
   stylix.enable = true;
   home-manager.extraSpecialArgs = { inherit base16; };  
