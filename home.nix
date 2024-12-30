@@ -40,7 +40,7 @@ in {
     home-manager.enable = true;
     kitty = {
       enable = true;
-      shellIntegration.enableZshIntegration = true;
+      shellIntegration.enableFishIntegration = true;
     };  
     fuzzel = {
       enable = true;
@@ -51,19 +51,8 @@ in {
 	};
       };  
     };
-    zsh = {
+    fish = {
       enable = true;
-      enableCompletion = true;
-      autosuggestion.enable = true;
-      syntaxHighlighting.enable = true;
-      zplug = {
-        enable = true;
-        plugins = [
-          { name = "zsh-users/zsh-autosuggestions"; } # Simple plugin installation
-          { name = "romkatv/powerlevel10k"; tags = [ as:theme depth:1 ]; }
-
-	];
-      };
     };
     neovim = {
       enable = true;
@@ -78,6 +67,9 @@ in {
         gruvbox
         mini-nvim
       ];
+    };
+    starship = {
+      enable = true;
     };
   };  
   

@@ -26,7 +26,7 @@
 
   
   stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-medium.yaml";
-  stylix.image = /home/l/.dotfiles/gruvbox-wallpapers/wallpapers/minimalistic/gruvbox-nix.png;
+  stylix.image = /home/l/.dotfiles/gruvbox-wallpapers/wallpapers/mix/gruv-sushi-streets.jpg;
   stylix.enable = true;
   home-manager.extraSpecialArgs = { inherit base16; };  
   # Enable networking
@@ -108,6 +108,9 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
   fastfetch
+  fish
+  fishPlugins.fifc
+  fishPlugins.sponge
   fzf
   gimp
   git
@@ -133,10 +136,6 @@
   wget
   yazi
   zathura
-  zsh
-  zsh-autocomplete
-  zsh-autosuggestions
-  zsh-powerlevel10k
   ];
 
   powerManagement.enable = true;
