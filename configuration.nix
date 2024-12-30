@@ -107,32 +107,50 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  fastfetch
-  fzf
-  gimp
-  git
-  home-manager
-  kitty
-  librewolf
-  neovim
-  neovim-gtk
-  niri
-  powertop 
-  tmux
-  tmuxPlugins.vim-tmux-navigator
-  tmuxPlugins.weather
-  vesktop
-  vim 
-  vimPlugins.luasnip-latex-snippets-nvim
-  vimPlugins.nvim-treesitter-parsers.latex
-  vimPlugins.nvim-treesitter-parsers.zathurarc
-  vimPlugins.vim-sensible
-  vimPlugins.vim-startify
-  vimPlugins.vim-tmux
-  vimPlugins.vimtex
-  wget
-  yazi
-  zathura
+    fastfetch
+    fzf
+    gimp
+    git
+    home-manager
+    kitty
+    librewolf
+    neovim
+    neovim-gtk
+    niri
+    powertop 
+    tmux
+    tmuxPlugins.vim-tmux-navigator
+    tmuxPlugins.weather
+    vesktop
+    vim 
+    vimPlugins.luasnip-latex-snippets-nvim
+    vimPlugins.nvim-treesitter-parsers.latex
+    vimPlugins.nvim-treesitter-parsers.zathurarc
+    vimPlugins.vim-sensible
+    vimPlugins.vim-startify
+    vimPlugins.vim-tmux
+    vimPlugins.vimtex
+    wget
+    yazi
+    zathura
+  ];
+
+  environment.gnome.excludePackages = with pkgs; [
+    gnome-photos
+    gnome-tour
+    gedit # text editor
+    cheese # webcam tool
+    gnome-music
+    gnome-terminal
+    epiphany # web browser
+    geary # email reader
+    evince # document viewer
+    gnome-characters
+    totem # video player
+    tali # poker game
+    iagno # go game
+    hitori # sudoku game
+    atomix # puzzle game
   ];
 
   powerManagement.enable = true;

@@ -55,17 +55,22 @@ in {
       initExtra = ''
         if [[ $("${pkgs.procps}"/bin/ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
         then
-          shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=""
-          exec ${pkgs.fish}/bin/fish $LOGIN_OPTION
+          # shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=""
+          exec ${pkgs.fish}/bin/fish # $LOGIN_OPTION
         fi
      '';
     };
     fish = {
       enable = true;
+      generateCompletions = true;
       interactiveShellInit = ''
       set fish_greeting # Disable greeting
       fastfetch
       '';
+      shellAliases = {
+        cdot = "cd ~/.dotfiles";
+        nxrb = "nixos-rebuild switch --impure --flake ~/.dotfiles#milk-surface6";
+      };
     };
     neovim = {
       enable = true;
