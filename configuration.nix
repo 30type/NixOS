@@ -25,8 +25,8 @@
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   
-  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-medium.yaml";
-  stylix.image = /home/l/.dotfiles/gruvbox-wallpapers/wallpapers/mix/gruv-sushi-streets.jpg;
+  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
+  stylix.image = ./gruvbox-wallpapers/wallpapers/mix/gruv-sushi-streets.jpg;
   stylix.enable = true;
   home-manager.extraSpecialArgs = { inherit base16; };  
   # Enable networking
@@ -108,9 +108,6 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
   fastfetch
-  fish
-  fishPlugins.fifc
-  fishPlugins.sponge
   fzf
   gimp
   git

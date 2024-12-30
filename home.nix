@@ -51,8 +51,21 @@ in {
 	};
       };  
     };
+    bash = {
+      initExtra = ''
+        if [[ $("${pkgs.procps}"/bin/ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
+        then
+          shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=""
+          exec ${pkgs.fish}/bin/fish $LOGIN_OPTION
+        fi
+     '';
+    };
     fish = {
       enable = true;
+      interactiveShellInit = ''
+      set fish_greeting # Disable greeting
+      fastfetch
+      '';
     };
     neovim = {
       enable = true;
@@ -61,11 +74,12 @@ in {
       vimAlias = true;
       vimdiffAlias = true;
       plugins = with pkgs.vimPlugins; [
+	vim-nix
+        gruvbox
+        mini-nvim
         nvim-lspconfig
         nvim-treesitter.withAllGrammars
         plenary-nvim
-        gruvbox
-        mini-nvim
       ];
     };
     starship = {
