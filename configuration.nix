@@ -126,30 +126,16 @@
     home-manager
     kitty
     librewolf
-    neovim
-    neovim-gtk
-    niri
     nixd
     nixfmt-rfc-style
     powertop
-    tmux
-    tmuxPlugins.vim-tmux-navigator
-    tmuxPlugins.weather
     vesktop
-    vim
-    vimPlugins.luasnip-latex-snippets-nvim
-    vimPlugins.nvim-treesitter-parsers.latex
-    vimPlugins.nvim-treesitter-parsers.zathurarc
-    vimPlugins.vim-sensible
-    vimPlugins.vim-startify
-    vimPlugins.vim-tmux
-    vimPlugins.vimtex
-    wget
-    yazi
+    wl-clipboard
     zathura
   ];
 
   nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
+
   environment.gnome.excludePackages = with pkgs; [
     gnome-photos
     gnome-tour

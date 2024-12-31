@@ -10,7 +10,7 @@ let
 in
 {
   imports = [
-    ./nixvim/default.nix
+    ./shell/default.nix
   ];
   gtk.enable = true;
 
@@ -67,39 +67,6 @@ in
           exec ${pkgs.fish}/bin/fish # $LOGIN_OPTION
         fi
       '';
-    };
-    fish = {
-      enable = true;
-      generateCompletions = true;
-      interactiveShellInit = ''
-        set fish_greeting # Disable greeting
-        fastfetch
-      '';
-      shellAliases = {
-        cdot = "cd ~/.dotfiles";
-        nxrb = "nixos-rebuild switch --impure --flake ~/.dotfiles#milk-surface6";
-      };
-    };
-    neovim = {
-      enable = false;
-      defaultEditor = true;
-      viAlias = true;
-      vimAlias = true;
-      vimdiffAlias = true;
-      plugins = with pkgs.vimPlugins; [
-        vim-airline
-        vim-airline-clock
-        vim-airline-themes
-        vim-nix
-        gruvbox
-        mini-nvim
-        nvim-lspconfig
-        nvim-treesitter.withAllGrammars
-        plenary-nvim
-      ];
-    };
-    starship = {
-      enable = true;
     };
   };
 
