@@ -13,5 +13,5 @@ pkgs.stdenv.mkDerivation {
   installPhase = ''
     mkdir -p $out/bin
     cp ./* $out/bin
-    '';
+  '';
 }

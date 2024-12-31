@@ -2,14 +2,22 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, base16, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  nixvim,
+  base16,
+  ...
+}:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      inputs.home-manager.nixosModules.home-manager
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    inputs.home-manager.nixosModules.home-manager
+    #./nixvim/default.nix
+  ];
 
   home-manager.users.l = import ./home.nix;
   # microsoft-surface.ipts.enable = true;
@@ -24,11 +32,12 @@
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-  
   stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
   stylix.image = ./gruvbox-wallpapers/wallpapers/mix/gruv-sushi-streets.jpg;
   stylix.enable = true;
-  home-manager.extraSpecialArgs = { inherit base16; };  
+  home-manager.extraSpecialArgs = { inherit base16; };
+
+  home-manager.sharedModules = [ inputs.nixvim.homeManagerModules.nixvim ];
   # Enable networking
   networking.networkmanager.enable = true;
 
@@ -89,9 +98,12 @@
   users.users.l = {
     isNormalUser = true;
     description = "milk";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
     packages = with pkgs; [
-    #  thunderbird
+      #  thunderbird
     ];
   };
 
@@ -117,12 +129,14 @@
     neovim
     neovim-gtk
     niri
-    powertop 
+    nixd
+    nixfmt-rfc-style
+    powertop
     tmux
     tmuxPlugins.vim-tmux-navigator
     tmuxPlugins.weather
     vesktop
-    vim 
+    vim
     vimPlugins.luasnip-latex-snippets-nvim
     vimPlugins.nvim-treesitter-parsers.latex
     vimPlugins.nvim-treesitter-parsers.zathurarc
@@ -135,6 +149,7 @@
     zathura
   ];
 
+  nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
   environment.gnome.excludePackages = with pkgs; [
     gnome-photos
     gnome-tour
@@ -158,24 +173,24 @@
   services.power-profiles-daemon.enable = false;
 
   services.tlp = {
-      enable = true;
-      settings = {
-        CPU_SCALING_GOVERNOR_ON_AC = "performance";
-        CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+    enable = true;
+    settings = {
+      CPU_SCALING_GOVERNOR_ON_AC = "performance";
+      CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
 
-        CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
-        CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
+      CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
+      CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
 
-        CPU_MIN_PERF_ON_AC = 0;
-        CPU_MAX_PERF_ON_AC = 100;
-        CPU_MIN_PERF_ON_BAT = 0;
-        CPU_MAX_PERF_ON_BAT = 30;
+      CPU_MIN_PERF_ON_AC = 0;
+      CPU_MAX_PERF_ON_AC = 100;
+      CPU_MIN_PERF_ON_BAT = 0;
+      CPU_MAX_PERF_ON_BAT = 30;
 
-       #Optional helps save long term battery health
-       START_CHARGE_THRESH_BAT0 = 20; # 20 and bellow it starts to charge
-       STOP_CHARGE_THRESH_BAT0 = 85; # 85 and above it stops charging
+      #Optional helps save long term battery health
+      START_CHARGE_THRESH_BAT0 = 20; # 20 and bellow it starts to charge
+      STOP_CHARGE_THRESH_BAT0 = 85; # 85 and above it stops charging
 
-      };
+    };
   };
 
   fonts.packages = with pkgs; [
@@ -216,6 +231,9 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.11"; # Did you read the comment?
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
 }
