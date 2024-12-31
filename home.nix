@@ -79,6 +79,9 @@ in {
       vimAlias = true;
       vimdiffAlias = true;
       plugins = with pkgs.vimPlugins; [
+        vim-airline
+        vim-airline-clock
+        vim-airline-themes
 	vim-nix
         gruvbox
         mini-nvim
