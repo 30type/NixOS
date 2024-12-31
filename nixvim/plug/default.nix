@@ -3,7 +3,7 @@
     ./comment.nix
     ./lualine.nix
     ./lsp.nix
-#    ./neorg.nix
+    #    ./neorg.nix
     ./neo-tree.nix
     ./startify.nix
     ./telescope.nix
@@ -32,7 +32,7 @@
 
       oil = {
         enable = true;
-#        lazyLoad.settings.cmd = "Oil";
+        #        lazyLoad.settings.cmd = "Oil";
       };
 
       trim = {
