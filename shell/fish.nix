@@ -14,6 +14,9 @@
         # don't greet
         function fish_greeting; end
 
+        function starship_transient_prompt_func
+          starship module character
+        end
         # Map '-' to cd back to previous directory
         abbr -a -- - prevd
 
@@ -51,25 +54,28 @@
     # Prompt theme
     starship = {
       enable = true;
-
-      settings = {
-        character = {
-          success_symbol = "[❯](bold green)";
-          error_symbol = "[✗](bold red)";
-        };
-
-        python = {
-          format = "[$symbol $pyenv_prefix($version )(\\($virtualenv\\))]($style) ";
-          symbol = "";
-          version_format = "$raw";
-          style = "bold yellow";
-        };
-
-        nix_shell = {
-          format = "[$symbol$state]($style) ";
-          symbol = "❄️";
-        };
-      };
+      enableTransience = true;
+      enableFishIntegration = true;
+      settings = pkgs.lib.importTOML ./starship.toml;
+  #
+  #     settings = {
+  #       character = {
+  #         success_symbol = "[❯](bold green)";
+  #         error_symbol = "[✗](bold red)";
+  #       };
+  #
+  #       python = {
+  #         format = "[$symbol $pyenv_prefix($version )(\\($virtualenv\\))]($style) ";
+  #         symbol = "";
+  #         version_format = "$raw";
+  #         style = "bold yellow";
+  #       };
+  #
+  #       nix_shell = {
+  #         format = "[$symbol$state]($style) ";
+  #         symbol = "❄️";
+  #       };
+  #     };
     };
   };
 }

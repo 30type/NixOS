@@ -23,20 +23,12 @@ in
   stylix.enable = true;
 
   stylix.fonts = {
-    serif = {
-      package = pkgs.meslo-lgs-nf;
-      name = "Meslo LGS NF";
-    };
-
-    sansSerif = {
-      package = pkgs.meslo-lgs-nf;
-      name = "Meslo LGS NF";
-    };
-
     monospace = {
-      package = pkgs.meslo-lgs-nf;
-      name = "Meslo LGS NF";
+      package = pkgs.fira-code-nerdfont;
+      name = "FiraCode Nerd Font Mono";
     };
+    serif = config.stylix.fonts.monospace;
+    sansSerif = config.stylix.fonts.monospace;
 
     emoji = {
       package = pkgs.noto-fonts-emoji;
@@ -63,8 +55,8 @@ in
       initExtra = ''
         if [[ $("${pkgs.procps}"/bin/ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
         then
-          # shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=""
-          exec ${pkgs.fish}/bin/fish # $LOGIN_OPTION
+          shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=""
+          exec ${pkgs.fish}/bin/fish $LOGIN_OPTION
         fi
       '';
     };
