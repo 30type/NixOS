@@ -5,9 +5,6 @@
   ...
 }:
 
-let
-  gruvboxPlus = import ./gruvbox-plus.nix { inherit pkgs; };
-in
 {
   imports = [
     ./shell/default.nix
@@ -17,8 +14,8 @@ in
   gtk.cursorTheme.package = pkgs.bibata-cursors;
   gtk.cursorTheme.name = "Bibata-Modern-Ice";
 
-  gtk.iconTheme.package = gruvboxPlus;
-  gtk.iconTheme.name = "GruvboxPlus";
+  gtk.iconTheme.package = pkgs.gruvbox-plus-icons;
+  gtk.iconTheme.name = "Gruvbox-Plus-Dark";
 
   stylix.enable = true;
 
@@ -42,16 +39,8 @@ in
       enable = true;
       shellIntegration.enableFishIntegration = true;
     };
-    fuzzel = {
-      enable = true;
-      settings = {
-        main = {
-          terminal = "${pkgs.kitty}/bin/kitty";
-          layer = "overlay";
-        };
-      };
-    };
     bash = {
+      enable = true;
       initExtra = ''
         if [[ $("${pkgs.procps}"/bin/ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
         then

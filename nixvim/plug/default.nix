@@ -8,7 +8,7 @@
     ./startify.nix
     ./telescope.nix
     ./treesitter.nix
-    ./vimtex.nix # inria
+    ./typst.nix
   ];
 
   programs.nixvim = {
