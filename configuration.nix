@@ -16,12 +16,12 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     inputs.home-manager.nixosModules.home-manager
-    ./gnome.nix
+    ./hypr/default.nix
+    ./qmk.nix
+    ./foot.nix
   ];
 
   home-manager.users.l = import ./home.nix;
-  # microsoft-surface.ipts.enable = true;
-  # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
@@ -32,7 +32,7 @@
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
+  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-dark.yaml";
   stylix.image = ./gruvbox-wallpapers/wallpapers/mix/gruv-sushi-streets.jpg;
   stylix.enable = true;
   home-manager.extraSpecialArgs = { inherit base16; };
@@ -63,6 +63,14 @@
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
+
+  # Enable automatic login for the user.
+  services.displayManager.autoLogin.enable = true;
+  services.displayManager.autoLogin.user = "l";
+
+  # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
+  systemd.services."getty@tty1".enable = false;
+  systemd.services."autovt@tty1".enable = false;
 
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
@@ -108,11 +116,9 @@
     git
     gruvbox-plus-icons
     home-manager
-    kitty
     librewolf
     nixd
     nixfmt-rfc-style
-    powertop
     tree
     vesktop
     wl-clipboard
@@ -120,31 +126,6 @@
   ];
 
   nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
-
-  powerManagement.enable = true;
-  services.thermald.enable = true;
-  services.power-profiles-daemon.enable = false;
-
-  services.tlp = {
-    enable = true;
-    settings = {
-      CPU_SCALING_GOVERNOR_ON_AC = "performance";
-      CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
-
-      CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
-      CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
-
-      CPU_MIN_PERF_ON_AC = 0;
-      CPU_MAX_PERF_ON_AC = 100;
-      CPU_MIN_PERF_ON_BAT = 0;
-      CPU_MAX_PERF_ON_BAT = 30;
-
-      #Optional helps save long term battery health
-      START_CHARGE_THRESH_BAT0 = 20; # 20 and bellow it starts to charge
-      STOP_CHARGE_THRESH_BAT0 = 85; # 85 and above it stops charging
-
-    };
-  };
 
   fonts.packages = with pkgs; [
     fira-code
@@ -161,6 +142,9 @@
   fonts.enableDefaultPackages = true;
   fonts.fontDir.enable = true;
 
+  hardware.bluetooth.enable = true; # enables support for Bluetooth
+  hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
+  services.blueman.enable = true;
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;

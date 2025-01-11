@@ -7,7 +7,7 @@
 
 {
   imports = [
-    ./shell/default.nix
+    ./home-manager/default.nix
   ];
   gtk.enable = true;
 
@@ -35,10 +35,6 @@
 
   programs = {
     home-manager.enable = true;
-    kitty = {
-      enable = true;
-      shellIntegration.enableFishIntegration = true;
-    };
     bash = {
       enable = true;
       initExtra = ''

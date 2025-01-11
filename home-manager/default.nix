@@ -6,11 +6,10 @@
 }:
 {
   imports = [
-    ../nixvim/default.nix
+    ../neovim/neovim.nix
     ./tmux.nix
     ./yazi.nix
     ./fish.nix
-    # ./starship.nix
   ];
 
   programs = {

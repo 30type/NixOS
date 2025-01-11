@@ -35,7 +35,9 @@
     gnome-weather
     hitori # sudoku game
     iagno # go game
+    seahorse # annoying and broken ssh-askpass
     tali # poker game
+    x11_ssh_askpass
     yelp # Help view
   ];
   programs.dconf.enable = true;

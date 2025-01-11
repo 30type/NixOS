@@ -21,7 +21,7 @@
     shortcut = "s";
 
     plugins = with pkgs.tmuxPlugins; [
-      gruvbox
+      tokyo-night-tmux
     ];
 
     extraConfig = ''
@@ -35,7 +35,17 @@
       bind-key C-a last-window
 
       set -g default-terminal "tmux-256color"
-      set -g @tmux-gruvbox 'dark256'
+
+      set -g @tokyo-night-tmux_theme night    # storm | day | default to 'night'
+      set -g @tokyo-night-tmux_transparent 1  # 1 or 0
+      set -g @tokyo-night-tmux_window_id_style roman
+      set -g @tokyo-night-tmux_pane_id_style roman
+      set -g @tokyo-night-tmux_zoom_id_style roman
+
+      set -g @tokyo-night-tmux_show_netspeed 1
+      set -g @tokyo-night-tmux_netspeed_iface "wlan0" # Detected via default route
+      set -g @tokyo-night-tmux_netspeed_showip 1      # Display IPv4 address (default 0)
+      set -g @tokyo-night-tmux_netspeed_refresh 1     # Update interval in seconds (default 1)
 
       # For neovim
       set -g focus-events on
