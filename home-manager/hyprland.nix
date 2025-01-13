@@ -2,5 +2,6 @@
 
 {
   wayland.windowManager.hyprland.enable = true;
-  xdg.configFile.hyprland.source = ../hypr/hyprland.conf
+  wayland.windowManager.hyprland.systemd.enable = false;
+  xdg.configFile.hypr.source = ../hypr;
 }

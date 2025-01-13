@@ -11,7 +11,7 @@
     clock24 = true;
 
     # Allows for faster key repetition
-    escapeTime = 50;
+    escapeTime = 25;
 
     keyMode = "vi";
     # Overrides the hjkl and HJKL bindings for pane navigation and resizing in VI mode
@@ -21,7 +21,6 @@
     shortcut = "s";
 
     plugins = with pkgs.tmuxPlugins; [
-      tokyo-night-tmux
     ];
 
     extraConfig = ''
@@ -34,18 +33,16 @@
       # 2x C-a goes back and fourth between most recent windows
       bind-key C-a last-window
 
-      set -g default-terminal "tmux-256color"
+      # https://old.reddit.com/r/tmux/comments/mesrci/tmux_2_doesnt_seem_to_use_256_colors/
+      set -g default-terminal "xterm-256color"
+      set -ga terminal-overrides ",*256col*:Tc"
+      set -ga terminal-overrides '*:Ss=\E[%p1%d q:Se=\E[ q'
+      set-environment -g COLORTERM "truecolor"
 
-      set -g @tokyo-night-tmux_theme night    # storm | day | default to 'night'
-      set -g @tokyo-night-tmux_transparent 1  # 1 or 0
-      set -g @tokyo-night-tmux_window_id_style roman
-      set -g @tokyo-night-tmux_pane_id_style roman
-      set -g @tokyo-night-tmux_zoom_id_style roman
-
-      set -g @tokyo-night-tmux_show_netspeed 1
-      set -g @tokyo-night-tmux_netspeed_iface "wlan0" # Detected via default route
-      set -g @tokyo-night-tmux_netspeed_showip 1      # Display IPv4 address (default 0)
-      set -g @tokyo-night-tmux_netspeed_refresh 1     # Update interval in seconds (default 1)
+      set -g @plugin 'TanglingTreats/tmux-everforest' # Adds to the list of plugins
+      set -g @tmux-everforest 'dark-medium' # Sets the option to select the theme. Also the default.
+      # Add '-xterm' to the back of the name for xterm256 compatibility
+      # E.g. 'dark-medium-xterm'
 
       # For neovim
       set -g focus-events on

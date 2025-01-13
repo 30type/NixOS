@@ -6,7 +6,6 @@
   config,
   pkgs,
   inputs,
-  nixvim,
   base16,
   ...
 }:
@@ -16,12 +15,11 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     inputs.home-manager.nixosModules.home-manager
-    ./hypr/default.nix
-    ./qmk.nix
-    ./foot.nix
+    ./modules/default.nix
   ];
 
-  home-manager.users.l = import ./home.nix;
+  home-manager.users.l = import ./home-manager/home.nix;
+  home-manager.backupFileExtension = "bac";
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
@@ -32,12 +30,11 @@
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-dark.yaml";
-  stylix.image = ./gruvbox-wallpapers/wallpapers/mix/gruv-sushi-streets.jpg;
+  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/everforest.yaml";
+  stylix.image = ./wallpapers/car2.png;
   stylix.enable = true;
   home-manager.extraSpecialArgs = { inherit base16; };
 
-  home-manager.sharedModules = [ inputs.nixvim.homeManagerModules.nixvim ];
   # Enable networking
   networking.networkmanager.enable = true;
 
@@ -117,6 +114,8 @@
     gruvbox-plus-icons
     home-manager
     librewolf
+    qutebrowser
+    neovim
     nixd
     nixfmt-rfc-style
     tree
@@ -128,12 +127,8 @@
   nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
 
   fonts.packages = with pkgs; [
+    (pkgs.nerdfonts.override {fonts = ["NerdFontsSymbolsOnly"];})
     fira-code
-    fira-code-nerdfont
-    fira-code-symbols
-    liberation_ttf
-    meslo-lg
-    meslo-lgs-nf
     noto-fonts
     noto-fonts-cjk-sans
     noto-fonts-emoji
