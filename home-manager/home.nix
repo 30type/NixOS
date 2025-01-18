@@ -16,29 +16,28 @@
 
   home.username = "l";
   home.homeDirectory = "/home/l";
-  gtk.enable = true;
 
-  gtk.cursorTheme.package = pkgs.bibata-cursors;
-  gtk.cursorTheme.name = "Bibata-Modern-Ice";
+  gtk = {
+    enable = true;
+    cursorTheme.package = pkgs.bibata-cursors;
+    cursorTheme.name = "Bibata-Modern-Ice";
+    iconTheme.package = pkgs.gruvbox-plus-icons;
+    iconTheme.name = "Gruvbox-Plus-Dark";
+  };
 
-  gtk.iconTheme.package = pkgs.gruvbox-plus-icons;
-  gtk.iconTheme.name = "Gruvbox-Plus-Dark";
-
-  stylix.enable = true;
-
-  stylix.image = ../wallpapers/car2.png;
-  stylix.polarity = "dark";
-  stylix.fonts = {
-    monospace = {
-      package = pkgs.fira-code;
-      name = "FiraCode";
-    };
-    serif = config.stylix.fonts.monospace;
-    sansSerif = config.stylix.fonts.monospace;
-
-    emoji = {
-      package = pkgs.noto-fonts-emoji;
-      name = "Noto Color Emoji";
+  stylix = { 
+    enable = true;
+    image = ../wallpapers/car2.png;
+    polarity = "dark";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/everforest.yaml";
+    fonts = {
+      monospace = {
+        package = pkgs.fira-code;
+        name = "FiraCode"; };
+      serif.config.stylix.fonts.monospace;
+      sansSerif.config.stylix.fonts.monospace;
+      emoji.package = pkgs.noto-fonts-emoji;
+      emoji.name = "Noto Color Emoji";
     };
   };
 
