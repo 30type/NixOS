@@ -14,12 +14,11 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    inputs.home-manager.nixosModules.home-manager
-    ./modules/default.nix
+    # inputs.home-manager.nixosModules.home-manager
+    ../../modules/default.nix
   ];
 
-  home-manager.users.l = import ./home-manager/home.nix;
-  home-manager.backupFileExtension = "bac";
+  # home-manager.users.l = import ./home-manager/home.nix;
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
@@ -30,10 +29,10 @@
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/everforest.yaml";
-  stylix.image = ./wallpapers/car2.png;
-  stylix.enable = true;
-  home-manager.extraSpecialArgs = { inherit base16; };
+  # stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/everforest.yaml";
+  # stylix.image = ../../wallpapers/car2.png;
+  # stylix.enable = true;
+  # home-manager.extraSpecialArgs = { inherit base16; };
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -104,38 +103,53 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+
+  programs.kdeconnect.enable = true;
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    equicord
     fastfetch
     fzf
     gimp
     git
+    goofcord
     gruvbox-plus-icons
     home-manager
-    librewolf
-    qutebrowser
+    libreoffice-qt6
+    minecraft
     neovim
     nixd
     nixfmt-rfc-style
+    prismlauncher
+    qutebrowser
     tree
     vesktop
+    vial
     wl-clipboard
     zathura
   ];
 
+  nixpkgs.config.allowBroken = true;
+
   nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
 
-  fonts.packages = with pkgs; [
-    (pkgs.nerdfonts.override {fonts = ["NerdFontsSymbolsOnly"];})
-    fira-code
-    noto-fonts
-    noto-fonts-cjk-sans
-    noto-fonts-emoji
-  ];
+  fonts = { 
+    enableDefaultPackages = true;
+    fontDir.enable = true;
+    packages = with pkgs; [
+      (pkgs.nerdfonts.override {fonts = [ "NerdFontsSymbolsOnly" "JetBrainsMono" ];})
+      noto-fonts
+      noto-fonts-cjk-sans
+      twemoji-color-font
+      jetbrains-mono
+    ];
 
-  fonts.enableDefaultPackages = true;
-  fonts.fontDir.enable = true;
+    fontconfig.defaultFonts = {
+      monospace = [ "JetBrains Mono" "Symbols Nerd Font" ];
+      emoji = [ "Twitter Color Emoji" ];
+    };
+  };
 
   hardware.bluetooth.enable = true; # enables support for Bluetooth
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot

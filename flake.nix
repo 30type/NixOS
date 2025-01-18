@@ -18,12 +18,13 @@
     {
       home-manager,
       nixpkgs,
+      stylix,
       ...
     }@inputs:
     let
       system = "x86_64-linux";
     in {
-      nixosConfigurations.milk-surface6 = (
+      nixosConfigurations.desktop = (
         nixpkgs.lib.nixosSystem {
           specialArgs = {
             inherit system;
@@ -31,10 +32,31 @@
           };
           modules = [
             {nixpkgs.overlays = [inputs.hyprpanel.overlay];}
-            inputs.stylix.nixosModules.stylix
-            ./configuration.nix
+            ./hosts/desktop/configuration.nix
           ];
         }
       );
+      nixosConfigurations.ideapad = (
+        nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit system;
+            inherit inputs;
+          };
+          modules = [
+            inputs.stylix.nixosModules.stylix
+            ./hosts/ideapad/configuration.nix
+          ];
+        }
+      );
+      homeConfigurations.l = home-manager.lib.homeManagerConfigurations {
+        specialArgs = {
+          inherit system;
+          inherit inputs;
+        };
+        modules = [ 
+          ./home-manager/home.nix 
+          stylix.homeManagerModule.stylix
+        ];
+      };
     };
 }

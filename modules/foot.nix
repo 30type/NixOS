@@ -8,7 +8,7 @@
     settings = {
       main = {
         shell = "${pkgs.fish}/bin/fish";
-        font = "FiraCode:size=12, Noto Color Emoji:size=12";
+        font = "JetBrains Mono:style=Regular:size=12, Noto Color Emoji:size=12";
       };
       scrollback = {
         lines = 100000;
