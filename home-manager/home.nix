@@ -14,6 +14,8 @@
     ./fish.nix
   ];
 
+  home.username = "l";
+  home.homeDirectory = "/home/l";
   gtk.enable = true;
 
   gtk.cursorTheme.package = pkgs.bibata-cursors;
@@ -24,6 +26,8 @@
 
   stylix.enable = true;
 
+  stylix.image = ../wallpapers/car2.png;
+  stylix.polarity = "dark";
   stylix.fonts = {
     monospace = {
       package = pkgs.fira-code;

@@ -48,15 +48,14 @@
           ];
         }
       );
-      homeConfigurations.l = home-manager.lib.homeManagerConfigurations {
-        specialArgs = {
-          inherit system;
-          inherit inputs;
+      homeConfigurations = {
+        "l@nixos" = home-manager.lib.homeManagerConfiguration {
+	  pkgs = nixpkgs.legacyPackages.x86_64-linux;
+          modules = [ 
+            ./home-manager/home.nix 
+            stylix.homeManagerModules.stylix
+          ];
         };
-        modules = [ 
-          ./home-manager/home.nix 
-          stylix.homeManagerModule.stylix
-        ];
       };
     };
 }
