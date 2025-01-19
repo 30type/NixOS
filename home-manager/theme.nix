@@ -2,15 +2,17 @@
 {
   gtk = {
     enable = true;
-    # cursorTheme.package = pkgs.whitesur-cursors;
-    # cursorTheme.name = "Whitesur-Cursors";
+    cursorTheme.package = pkgs.whitesur-cursors;
+    cursorTheme.name = "WhiteSur-Cursors";
     iconTheme.package = pkgs.whitesur-icon-theme;
-    # iconTheme.name = "Whitesur-Icon-Theme";
-    theme.package = pkgs.whitesur-gtk-theme;
-    # theme.name = "Whitesur-Gtk-Theme";
+    iconTheme.name = "WhiteSur-Dark";
+    # theme.package = pkgs.whitesur-gtk-theme;
+    # theme.name = "WhiteSur-Dark";
   };
   qt = {
-    
+   enable = true; 
+   style.package = pkgs.whitesur-kde;
+   style.name = "WhiteSur-Dark";
   };
   stylix = { 
     enable = true;
