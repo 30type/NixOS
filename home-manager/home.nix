@@ -12,7 +12,7 @@
     ./tmux.nix
     ./yazi.nix
     ./fish.nix
-    ./theme.nix
+    ./hyprland.nix
   ];
 
   home.username = "l";
