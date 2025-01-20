@@ -16,8 +16,7 @@
   };
   stylix = { 
     enable = true;
-    image = ../wallpapers/nordic-car.png;
-    polarity = "dark";
+    image = ../wallpapers/ign_driving.png;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/nord.yaml";
   };
 }

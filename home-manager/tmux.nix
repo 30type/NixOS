@@ -21,6 +21,7 @@
     shortcut = "s";
 
     plugins = with pkgs.tmuxPlugins; [
+      nord
     ];
 
     extraConfig = ''
@@ -41,8 +42,9 @@
       set -ga terminal-overrides '*:Ss=\E[%p1%d q:Se=\E[ q'
       set-environment -g COLORTERM "truecolor"
 
-      set -g @plugin 'TanglingTreats/tmux-everforest' # Adds to the list of plugins
-      set -g @tmux-everforest 'dark-medium-xterm' # Sets the option to select the theme. Also the default.
+      set -g @plugin "nordtheme/tmux"
+      # set -g @plugin 'TanglingTreats/tmux-everforest' # Adds to the list of plugins
+      # set -g @tmux-everforest 'dark-medium-xterm' # Sets the option to select the theme. Also the default.
       # Add '-xterm' to the back of the name for xterm256 compatibility
       # E.g. 'dark-medium-xterm'
 
