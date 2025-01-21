@@ -1,12 +1,12 @@
 return {
   -- add gruvbox
-  { "neanias/everforest-nvim" },
+  { "gbprod/nord.nvim" },
 
   -- Configure LazyVim to load gruvbox
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "everforest",
+      colorscheme = "nord",
       transparent = true,
       styles = {
         sidebars = "transparent",
