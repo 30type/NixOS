@@ -24,8 +24,14 @@
     enable = true;
     image = ../wallpapers/ign_driving.png;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/nord.yaml";
-
+    targets.hyprland.enable = false;
   };
 
-  xdg.configFile.hypr.source = ../modules/hypr;
+  # xdg.configFile.hypr.source = ../modules/hypr/hyprland.conf;
+  # xdg.configFile.hypr.recursive = true;
+  # xdg.configFile.hypr.enable = false;
+
+
+  xdg.configFile."hypr/hyprland.conf".source = ../hosts/desktop/hypr/hyprland.conf;
+  # xdg.configFile.hypr.recursive =true;
 }
