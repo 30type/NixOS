@@ -11,6 +11,7 @@
     hyprlock
     hyprpanel
     libnotify
+    nwg-panel
     rofi-wayland
     swww
   ];
