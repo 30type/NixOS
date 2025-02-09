@@ -8,10 +8,10 @@
     # client connected to *that window*. Much more reasonable.
     aggressiveResize = true;
 
-    clock24 = true;
+    clock24 = false;
 
     # Allows for faster key repetition
-    escapeTime = 25;
+    escapeTime = 0;
 
     keyMode = "vi";
     # Overrides the hjkl and HJKL bindings for pane navigation and resizing in VI mode
@@ -28,7 +28,7 @@
       
       set -g default-shell "${pkgs.fish}/bin/fish"
       # Move bar to the top
-      set -g status-position top
+      set -g status-position bottom
 
       # Enable mouse
       set -g mouse on
@@ -43,10 +43,6 @@
       set-environment -g COLORTERM "truecolor"
 
       set -g @plugin "nordtheme/tmux"
-      # set -g @plugin 'TanglingTreats/tmux-everforest' # Adds to the list of plugins
-      # set -g @tmux-everforest 'dark-medium-xterm' # Sets the option to select the theme. Also the default.
-      # Add '-xterm' to the back of the name for xterm256 compatibility
-      # E.g. 'dark-medium-xterm'
 
       # For neovim
       set -g focus-events on

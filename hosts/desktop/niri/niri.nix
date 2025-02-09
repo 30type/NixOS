@@ -1,22 +1,31 @@
-{ pkgs, ... }:
-
+{ lib
+, pkgs
+, ...
+}:
 {
-  programs.hyprland = {
+  programs.niri = {
     enable = true;
-    withUWSM = true;
-    
+    package = pkgs.niri;
   };
+
   environment.systemPackages = with pkgs; [
     foot
-    hyprlock
-    hyprpanel
     libnotify
+    niri
+    grim
+    slurp
     rofi-wayland
     swww
+    wl-clipboard-rs
   ];
+
+  environment.variables = {
+    NIXOS_OZONE_WL = "1";
+    DISPLAY = "0";
+  };
   xdg.portal = {
     enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
+    extraPortals = [ pkgs.xdg-desktop-portal-gnome pkgs.xdg-desktop-portal-gtk ];
   };
   security.rtkit.enable = true;
   services.pipewire = {

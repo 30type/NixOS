@@ -17,7 +17,7 @@
     # inputs.home-manager.nixosModules.home-manager
     ../../modules/foot.nix
     ../../modules/qmk.nix
-    ../../modules/hypr/default.nix
+    ./niri/niri.nix
   ];
 
   # home-manager.users.l = import ./home-manager/home.nix;
@@ -111,6 +111,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    emacs
     equicord
     fastfetch
     fzf
@@ -124,12 +125,12 @@
     neovim
     nixd
     nixfmt-rfc-style
+    nodejs_20
     prismlauncher
     qutebrowser
     tree
     vesktop
     vial
-    wl-clipboard
     zathura
   ];
 

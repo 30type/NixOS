@@ -25,6 +25,7 @@
     image = ../wallpapers/ign_driving.png;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/nord.yaml";
     targets.hyprland.enable = false;
+    targets.tmux.enable = false;
   };
 
   # xdg.configFile.hypr.source = ../modules/hypr/hyprland.conf;
