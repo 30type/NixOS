@@ -10,13 +10,13 @@ if true then return {} end
 -- * override the configuration of LazyVim plugins
 return {
   -- add gruvbox
-  { "ngbprod/nord.nvim" },
+  { "nyoom-engineering/oxocarbon.nvim" },
 
   -- Configure LazyVim to load gruvbox
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "nord",
+      colorscheme = "oxocarbon",
     },
   },
 

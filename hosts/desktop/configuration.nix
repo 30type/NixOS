@@ -17,6 +17,7 @@
     # inputs.home-manager.nixosModules.home-manager
     ../../modules/foot.nix
     ../../modules/qmk.nix
+    ../../modules/fish.nix
     ./niri/niri.nix
   ];
 
@@ -111,8 +112,6 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    emacs
-    equicord
     fastfetch
     fzf
     gimp
@@ -128,6 +127,7 @@
     nodejs_20
     prismlauncher
     qutebrowser
+    stow
     tree
     vesktop
     vial
