@@ -15,10 +15,12 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     # inputs.home-manager.nixosModules.home-manager
-    ../../modules/foot.nix
-    ../../modules/qmk.nix
-    ../../modules/fish.nix
-    ./niri/niri.nix
+    ../modules/foot.nix
+    ../modules/fonts.nix
+    ../modules/locale.nix
+    ../modules/qmk.nix
+    ../modules/fish.nix
+    ./niri.nix
   ];
 
   # home-manager.users.l = import ./home-manager/home.nix;
@@ -40,31 +42,11 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
-  # Set your time zone.
-  time.timeZone = "Europe/Dublin";
-
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
-
-  i18n.supportedLocales = [ "en_US.UTF-8/UTF-8" "en_IE.UTF-8/UTF-8" ];
-
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "en_IE.UTF-8";
-    LC_IDENTIFICATION = "en_IE.UTF-8";
-    LC_MEASUREMENT = "en_IE.UTF-8";
-    LC_MONETARY = "en_IE.UTF-8";
-    LC_NAME = "en_IE.UTF-8";
-    LC_NUMERIC = "en_IE.UTF-8";
-    LC_PAPER = "en_IE.UTF-8";
-    LC_TELEPHONE = "en_IE.UTF-8";
-    LC_TIME = "en_IE.UTF-8";
-  };
-
   # Enable CUPS to print documents.
-  services.printing.enable = true;
+  services.printing.enable = false;
 
   # Enable automatic login for the user.
-  services.displayManager.autoLogin.enable = true;
+  services.displayManager.autoLogin.enable = false;
   services.displayManager.autoLogin.user = "l";
 
   # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
@@ -118,42 +100,23 @@
     git
     goofcord
     gruvbox-plus-icons
-    home-manager
     libreoffice-qt6
     minecraft
     neovim
     nixd
     nixfmt-rfc-style
-    nodejs_20
     prismlauncher
     qutebrowser
     stow
     tree
-    vesktop
     vial
     zathura
+    zellij
   ];
 
   nixpkgs.config.allowBroken = true;
 
   nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
-
-  fonts = { 
-    enableDefaultPackages = true;
-    fontDir.enable = true;
-    packages = with pkgs; [
-      (pkgs.nerdfonts.override {fonts = [ "NerdFontsSymbolsOnly" "JetBrainsMono" ];})
-      noto-fonts
-      noto-fonts-cjk-sans
-      twemoji-color-font
-      jetbrains-mono
-    ];
-
-    fontconfig.defaultFonts = {
-      monospace = [ "JetBrains Mono" "Symbols Nerd Font" ];
-      emoji = [ "Twitter Color Emoji" ];
-    };
-  };
 
   hardware.bluetooth.enable = true; # enables support for Bluetooth
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
