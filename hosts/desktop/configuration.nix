@@ -12,8 +12,8 @@
 
 {
   imports = [
-    ../modules/
     ./hardware-configuration.nix
+    ../modules
   ];
 
   # Enable automatic login for the user.
@@ -23,6 +23,8 @@
 
   hardware.graphics.enable = true;
 
+
+  networking.hostName = "desktop"; # Define your hostname.
   environment.systemPackages = with pkgs; [
     cachix
     cmake
