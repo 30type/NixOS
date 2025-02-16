@@ -1,12 +1,19 @@
-{config, pkgs, ... }:
+{lib, config, pkgs, ... }:
 {
-  services.emacs.package = pkgs.emacs-pgtk;
-  services.emacs.enable = true;
+  options = {
+    emacs-pgtk.enable =
+      lib.mkEnableOption "enables emacs-overlay";
+  };
 
-  nixpkgs.overlays = [
-    (import (builtins.fetchTarball {
-      url = "https://github.com/nix-community/emacs-overlay/archive/master.tar.gz";
-      sha256 = "sha256:17kjr12wq9lmclng1kmxzlcmp7fkpxzxpja0wazfgjkygxn2z4lh";
-    }))
-  ];
+  config = lib.mkIf config.emacs-pgtk.enable {
+    services.emacs.package = pkgs.emacs-pgtk;
+    services.emacs.enable = true;
+
+    nixpkgs.overlays = [
+      (import (builtins.fetchTarball {
+        url = "https://github.com/nix-community/emacs-overlay/archive/master.tar.gz";
+        sha256 = "sha256:17kjr12wq9lmclng1kmxzlcmp7fkpxzxpja0wazfgjkygxn2z4lh";
+      }))
+    ];
+  };
 }

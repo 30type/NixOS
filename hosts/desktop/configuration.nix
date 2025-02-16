@@ -6,6 +6,7 @@
   config,
   pkgs,
   inputs,
+  lib,
   base16,
   ...
 }:
@@ -14,9 +15,10 @@
   imports = [
     ./hardware-configuration.nix
     ../modules
-    ../modules/emacs.nix
   ];
 
+  emacs-pgtk.enable =
+    lib.mkOverride 10 true;
   # Enable automatic login for the user.
   services.displayManager.autoLogin.enable = false;
   services.displayManager.autoLogin.user = "l";
