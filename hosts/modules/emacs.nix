@@ -1,0 +1,12 @@
+{config, pkgs, ... }:
+{
+  services.emacs.package = pkgs.emacs-pgtk;
+  services.emacs.enable = true;
+
+  nixpkgs.overlays = [
+    (import (builtins.fetchTarball {
+      url = "https://github.com/nix-community/emacs-overlay/archive/master.tar.gz";
+      sha256 = "sha256:17kjr12wq9lmclng1kmxzlcmp7fkpxzxpja0wazfgjkygxn2z4lh";
+    }))
+  ];
+}

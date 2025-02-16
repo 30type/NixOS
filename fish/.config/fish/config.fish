@@ -1,8 +1,9 @@
 # don't greet
-function fish_greeting; end
+function fish_greeting
+end
 
 function starship_transient_prompt_func
-  starship module character
+    starship module character
 end
 # Map '-' to cd back to previous directory
 abbr -a -- - prevd
@@ -21,7 +22,7 @@ set fish_cursor_replace_one underscore
 set fish_cursor_replace underscore
 
 function multicd
-  echo cd (string repeat -n (math (string length -- $argv[1]) - 1) ../)
+    echo cd (string repeat -n (math (string length -- $argv[1]) - 1) ../)
 end
 abbr --add dotdot --regex '^\.\.+$' --function multicd
 

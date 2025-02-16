@@ -1,6 +1,9 @@
 {
-  description = "My home configuration.";
-
+  description = "
+                            __   __      ___                 ___ 
+    |\/| \ /    |\ | | \_/ /  \ /__`    |__  |     /\  |__/ |__  
+    |  |  |     | \| | / \ \__/ .__/    |    |___ /~~\ |  \ |___ 
+  ";
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-24.11";
     stylix.url = "github:danth/stylix";
@@ -11,7 +14,6 @@
   };
 
   outputs = {
-    home-manager,
     nixpkgs,
     stylix,
     ...
