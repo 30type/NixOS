@@ -1,7 +1,4 @@
-{ lib
-, pkgs
-, ...
-}:
+{ lib, pkgs, ... }:
 {
   programs.niri = {
     enable = true;
@@ -10,10 +7,7 @@
 
   environment.systemPackages = with pkgs; [
     foot
-    libnotify
     niri
-    grim
-    slurp
     rofi-wayland
     swww
     wl-clipboard-rs
