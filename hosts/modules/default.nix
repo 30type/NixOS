@@ -4,7 +4,6 @@
     ../modules/audio.nix
     ../modules/bluetooth.nix
     ../modules/bootloader.nix
-    ../modules/emacs.nix
     ../modules/fish.nix
     ../modules/fonts.nix
     ../modules/foot.nix

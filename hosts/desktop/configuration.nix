@@ -14,6 +14,7 @@
   imports = [
     ./hardware-configuration.nix
     ../modules
+    ../modules/emacs.nix
   ];
 
   # Enable automatic login for the user.
