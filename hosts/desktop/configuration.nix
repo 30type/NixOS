@@ -20,42 +20,13 @@
   emacs-pgtk.enable =
     lib.mkOverride 10 true;
   # Enable automatic login for the user.
-  services.displayManager.autoLogin.enable = false;
-  services.displayManager.autoLogin.user = "l";
-  services.flatpak.enable = true;
+   services.flatpak.enable = true;
 
   hardware.graphics.enable = true;
 
 
   networking.hostName = "desktop"; # Define your hostname.
-  environment.systemPackages = with pkgs; [
-    cachix
-    cmake
-    comma
-    coreutils
-    fastfetch
-    fd
-    fzf
-    flatpak
-    gcc
-    gimp
-    git
-    gnumake
-    goofcord
-    libreoffice-qt6
-    libtool
-    minecraft
-    neovim
-    nixd
-    nixfmt-rfc-style
-    prismlauncher
-    qutebrowser
-    ripgrep
-    stow
-    tree
-    vial
-    zellij
-  ];
+
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

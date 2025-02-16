@@ -12,6 +12,7 @@
     ../modules/networking.nix
     ../modules/niri.nix
     ../modules/nix.nix
+    ../modules/packages.nix
     ../modules/qmk.nix
     ../modules/users.nix
   ];
