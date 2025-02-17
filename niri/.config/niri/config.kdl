@@ -345,9 +345,9 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
-    Mod+Y { spawn "foot"; }
-    Mod+N { spawn "rofi" "-show" "drun"; }
-    Mod+T { spawn "rofi" "-show" "window"; }
+    Mod+D { spawn "foot"; }
+    Mod+T { spawn "rofi" "-show" "drun"; }
+    Mod+H { spawn "rofi" "-show" "window"; }
     Super+Alt+L { spawn "swaylock"; }
 
     // You can also use a shell. Do this if you need pipes, multiple commands, etc.
@@ -367,19 +367,19 @@ binds {
     Mod+Down  { focus-workspace-down; }
     Mod+Up    { focus-workspace-up; }
     Mod+Right { focus-column-right; }
-    Mod+H     { focus-column-left; }
+    Mod+C     { focus-column-left; }
     Mod+A     { focus-workspace-down; }
     Mod+O     { focus-workspace-up; }
-    Mod+I     { focus-column-right; }
+    Mod+E     { focus-column-right; }
 
     Mod+Shift+Left  { move-column-left; }
     Mod+Shift+Down  { move-workspace-down; }
     Mod+Shift+Up    { move-workspace-up; }
     Mod+Shift+Right { move-column-right; }
-    Mod+Shift+H     { move-column-left; }
+    Mod+Shift+C     { move-column-left; }
     Mod+Shift+A     { move-window-to-workspace-down; }
     Mod+Shift+O     { move-window-to-workspace-up; }
-    Mod+Shift+I     { move-column-right; }
+    Mod+Shift+E     { move-column-right; }
 
     Mod+Ctrl+A     { move-workspace-down; }
     Mod+Ctrl+O     { move-workspace-up; }
@@ -403,7 +403,7 @@ binds {
     // Mod+Shift+H     { focus-monitor-left; }
     // Mod+Shift+A     { focus-monitor-down; }
     // Mod+Shift+O     { focus-monitor-up; }
-    // Mod+Shift+I     { focus-monitor-right; }
+    // Mod+Shift+E     { focus-monitor-right; }
 
     // Mod+Shift+Ctrl+Left  { move-column-to-monitor-left; }
     // Mod+Shift+Ctrl+Down  { move-column-to-monitor-down; }
@@ -412,7 +412,7 @@ binds {
     // Mod+Shift+Ctrl+H     { move-column-to-monitor-left; }
     // Mod+Shift+Ctrl+A     { move-column-to-monitor-down; }
     // Mod+Shift+Ctrl+O     { move-column-to-monitor-up; }
-    // Mod+Shift+Ctrl+I     { move-column-to-monitor-right; }
+    // Mod+Shift+Ctrl+E     { move-column-to-monitor-right; }
 
     // Alternatively, there are commands to move just a single window:
     // Mod+Shift+Ctrl+Left  { move-window-to-monitor-left; }
@@ -516,12 +516,12 @@ binds {
     // Expel the bottom window from the focused column to the right.
     Mod+Period { expel-window-from-column; }
 
-    Mod+R { switch-preset-column-width; }
+    Mod+S { switch-preset-column-width; }
     // Mod+Shift+R { switch-preset-window-height; }
-    Mod+Ctrl+R { reset-window-height; }
+    Mod+Ctrl+S { reset-window-height; }
     Mod+F { maximize-column; }
-    Mod+Shift+F { fullscreen-window; }
-    Mod+C { center-column; }
+    Mod+Shift+S { fullscreen-window; }
+    Mod+K { center-column; }
 
     // Finer width adjustments.
     // This command can also:
@@ -555,7 +555,7 @@ binds {
     Alt+Print { screenshot-window; }
 
     // The quit action will show a confirmation dialog to avoid accidental exits.
-    Mod+Shift+E { quit; }
+    Mod+Shift+I { quit; }
     Ctrl+Alt+Delete { quit; }
 
     // Powers off the monitors. To turn them back on, do any input like
