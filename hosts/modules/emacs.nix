@@ -15,5 +15,8 @@
         sha256 = "sha256:17kjr12wq9lmclng1kmxzlcmp7fkpxzxpja0wazfgjkygxn2z4lh";
       }))
     ];
+    environment.systemPackages = [
+      pkgs.adw-gtk3
+    ];
   };
 }

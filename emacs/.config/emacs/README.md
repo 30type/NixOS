@@ -1,255 +1,199 @@
-<div align="center">
+https://github.com/MiniApollo/kickstart.emacs/assets/72389030/5c66130d-66b9-459b-a26d-210f3f937459
 
-# Doom Emacs
+# Table of Contents
 
-[Install](#install) • [Documentation] • [FAQ] • [Screenshots] • [Contribute](#contribute)
+1.  [Introduction](#orgb229cbd)
+    -  [Packages](#orgb05d649)
+    -  [Helpful resources](#orgfaf0570)
+2.  [Installation](#orgb633c86)
+    -  [1. Requirements](#orgb7bc22f)
+    -  [2. Backup your previous configuration](#org6189661)
+    -  [3. Clone the repository to the configuration location](#org820a205)
+    -  [4. Start Emacs](#orgd77a070)
+3.  [Post Installation](#org60302a9)
+    -  [1. Install fonts](#org87d8fc9)
+    -  [2. Open the configuration file](#org94fe140)
+    -  [3. Fork the repository](#org23b14b0)
+4.  [Uninstallation](#org14852f4)
+5.  [Gallery](#orgc18728a)
 
-![Made with Doom Emacs](https://img.shields.io/github/tag/doomemacs/doomemacs.svg?style=flat-square&label=release&color=58839b)
-![Supports Emacs 27.1–29.4](https://img.shields.io/badge/Supports-Emacs_27.1–29.4-blueviolet.svg?style=flat-square&logo=GNU%20Emacs&logoColor=white)
-![Latest commit](https://img.shields.io/github/last-commit/doomemacs/doomemacs?style=flat-square)
-<!-- ![Build status: master](https://img.shields.io/github/workflow/status/doomemacs/doomemacs/CI/master?style=flat-square) -->
-[![Discord Server](https://img.shields.io/discord/406534637242810369?color=738adb&label=Discord&logo=discord&logoColor=white&style=flat-square)][Discord]
-[![Discourse server](https://img.shields.io/discourse/users?server=https%3A%2F%2Fdiscourse.doomemacs.org&logo=discourse&label=Discourse&style=flat-square&color=9cf)][Discourse]
-
-![Doom Emacs Screenshot](https://raw.githubusercontent.com/doomemacs/doomemacs/screenshots/main.png)
-
-</div>
-
----
-
-### Table of Contents
-- [Introduction](#introduction)
-- [Features](#features)
-- [Prerequisites](#prerequisites)
-- [Install](#install)
-- [Roadmap](#roadmap)
-- [Getting help](#getting-help)
-- [Contribute](#contribute)
-
+<a id="orgb229cbd"></a>
 
 # Introduction
-<a href="http://ultravioletbat.deviantart.com/art/Yay-Evil-111710573">
-  <img src="https://raw.githubusercontent.com/doomemacs/doomemacs/screenshots/cacochan.png" align="right" />
-</a>
+This repository gives you a starting point for Gnu Emacs with good defaults, vim keybindings and packages that most people may want to use.
 
-> It is a story as old as time. A stubborn, shell-dwelling, and melodramatic
-> vimmer—envious of the features of modern text editors—spirals into
-> despair before he succumbs to the [dark side][evil-mode]. This is his config.
+Kickstart.emacs is **not** a distribution. <br>
+It's a template for your own configuration.
 
-Doom is a configuration framework for [GNU Emacs] tailored for Emacs bankruptcy
-veterans who want less framework in their frameworks, a modicum of stability
-(and reproducibility) from their package manager, and the performance of a hand
-rolled config (or better). It can be a foundation for your own config or a
-resource for Emacs enthusiasts to learn more about our favorite operating
-system.
+This config is:
+-   A single file **org document** (with examples of moving to multi-file)
+-   Modular and easily configurable
+-   Documented describing its purpuse
 
-Its design is guided by these mantras:
+Inspired by [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim)
 
-+ **Gotta go fast.** Startup and run-time performance are priorities. Doom goes
-  beyond by modifying packages to be snappier and load lazier.
-+ **Close to metal.** There's less between you and vanilla Emacs by design.
-  That's less to grok and less to work around when you tinker. Internals ought
-  to be written as if reading them were part of Doom's UX, and it is!
-+ **Opinionated, but not stubborn.** Doom is about reasonable defaults and
-  curated opinions, but use as little or as much of it as you like.
-+ **Your system, your rules.** You know better. At least, Doom hopes so! It
-  won't *automatically* install system dependencies (and will force plugins not
-  to either). Rely on `doom doctor` to tell you what's missing.
-+ **Nix/Guix is a great idea!** The Emacs ecosystem is temperamental. Things
-  break and they break often. Disaster recovery should be a priority! Doom's
-  package management should be declarative and your private config reproducible,
-  and comes with a means to roll back releases and updates (still a WIP).
-  
-Check out [the FAQ][FAQ] for answers to common questions about the project.
+Special thanks to:
+-   [DistroTube](https://www.youtube.com/watch?v=d1fgypEiQkE&list=PL5--8gKSku15e8lXf7aLICFmAHQVo0KXX)
+-   [System Crafters](https://www.youtube.com/watch?v=74zOY-vgkyw&list=PLEoMzSkcN8oPH1au7H6B7bBJ4ZO7BXjSZ)
 
+Their content helped me to create this configuration.
 
-# Features
-- Minimalistic good looks inspired by modern editors.
-- Curated and sane defaults for many packages, (major) OSes, and Emacs itself.
-- A modular organizational structure for separating concerns in your config.
-- A standard library designed to simplify your elisp bike shedding.
-- A declarative [package management system][package-management] (powered by
-  [straight.el]) with a command line interface. Install packages from anywhere,
-  not just (M)ELPA, and pin them to any commit.
-- Optional vim emulation powered by [evil-mode], including ports of popular vim
-  plugins like [vim-sneak], [vim-easymotion], [vim-unimpaired] and
-  [more][ported-vim-plugins]!
-- Opt-in LSP integration for many languages, using [lsp-mode] or [eglot]
-- Support for *many* programming languages. Includes syntax highlighting,
-  linters/checker integration, inline code evaluation, code completion (where
-  possible), REPLs, documentation lookups, snippets, and more!
-- Support for *many* tools, like docker, pass, ansible, terraform, and more.
-- A Spacemacs-esque [keybinding scheme][bindings], centered around leader
-  and localleader prefix keys (<kbd>SPC</kbd> and <kbd>SPC</kbd><kbd>m</kbd> for
-  evil users, <kbd>C-c</kbd> and <kbd>C-c l</kbd> for vanilla users).
-- A rule-based [popup manager][popup-system] to control how temporary buffers
-  are displayed (and disposed of).
-- Per-file indentation style detection and [editorconfig] integration. Let
-  someone else argue about tabs vs **_spaces_**.
-- Project-management tools and framework-specific minor modes with their own
-  snippets libraries.
-- Project search (and replace) utilities, powered by [ripgrep] and [ivy] or
-  [helm].
-- Isolated and persistent workspaces (also substitutes for vim tabs).
-- Support for Chinese and Japanese input systems.
-- Save a snapshot of your shell environment to a file for Emacs to load at
-  startup. No more struggling to get Emacs to inherit your `PATH`, among other
-  things.
+<a id="orgb05d649"></a>
+
+## Packages
+
+### Included Package list
+
+-   Package Manager: Package.el with Use-package (built in)
+-   [Evil mode](https://github.com/emacs-evil/evil): An extensible vi/vim layer
+-   [General](https://github.com/noctuid/general.el): Keybindings
+-   [Gruvbox-theme](https://github.com/greduan/emacs-theme-gruvbox): Color scheme
+-   [Doom-modeline](https://github.com/seagle0128/doom-modeline): Prettier, more useful modeline
+-   [Projectile](https://github.com/bbatsov/projectile): Project interaction library
+-   [Eglot](https://www.gnu.org/software/emacs/manual/html_mono/eglot.html): Language Server Protocol Support
+-   [Yasnippet](https://github.com/joaotavora/yasnippet): Template system and snippet collection package
+-   Some [Org mode](https://orgmode.org/) packages (toc-org, org-superstar)
+-   [Eat](https://codeberg.org/akib/emacs-eat): Fast terminal emulator within Emacs
+-   [Nerd Icons](https://github.com/rainstormstudio/nerd-icons.el): For icons and more helpful ui (Supports both GUI and TUI)
+-   [Magit](https://github.com/magit/magit): Complete text-based user interface to Git
+-   [Diff-hl](https://github.com/dgutov/diff-hl): Highlights uncommitted changes
+-   [Corfu](https://github.com/minad/corfu): Enhances in-buffer completion
+-   [Cape](https://github.com/minad/cape): Provides Completion At Point Extensions
+-   [Orderless](https://github.com/oantolin/orderless): Completion style that matches candidates in any order
+-   [Vertico](https://github.com/minad/vertico): Provides a performant and minimalistic vertical completion UI.
+-   [Marginalia](https://github.com/minad/marginalia): Adds extra metadata for completions in the margins (like descriptions).
+-   [Consult](https://github.com/minad/consult): Provides search and navigation commands.
+-   [Diminish](https://github.com/myrjola/diminish.el): Hiding or abbreviation of the modeline displays
+-   [Rainbow Delimiters](https://github.com/Fanael/rainbow-delimiters): Adds colors to brackets.
+-   [Which key](https://github.com/justbur/emacs-which-key): Helper utility for keychords
+
+### Recommended Packages
+
+If you want to see how to configure these, look up their git repositories or check out my [config](https://github.com/MiniApollo/config/blob/main/emacs/config.org).
+
+-   **[DashBoard](https://github.com/emacs-dashboard/emacs-dashboard):** Extensible startup screen.
+-   **[Drag Stuff](https://github.com/rejeep/drag-stuff.el):** Makes it possible to move selected text, regions and lines.
+-   **[Rainbow Mode](https://github.com/emacsmirror/rainbow-mode):** Displays the actual color as a background for any hex color value (ex. #ffffff).
+-   **[UndoTree](https://www.emacswiki.org/emacs/UndoTree):** Visualizes the undo history (alternative: [Vundo](https://github.com/casouri/vundo) with [undo-fu-session](https://github.com/emacsmirror/undo-fu-session)).
+-   **[Vterm](https://github.com/akermu/emacs-libvterm):** Fast, Fully-fledged terminal emulator inside GNU Emacs.
+-   **[Sudo-edit](https://github.com/nflath/sudo-edit):** Utilities for opening files with root privileges (also works with doas).
+-   **[Treesit-auto](https://github.com/renzmann/treesit-auto):** Automatically installs and uses tree-sitter major modes in Emacs 29+.
+-   **[Ws-butler](https://github.com/lewang/ws-butler):** Removes whitespace from the ends of lines.
 
 
-# Prerequisites
-- Git 2.23+
-- Emacs 27.1–29.4 (**Recommended: 29.4 +
-  [native-comp](https://www.emacswiki.org/emacs/GccEmacs)**)
-- [ripgrep] 11.0+
-- GNU `find`
-- *OPTIONAL:* [fd] 7.3.0+ (improves file indexing performance for some commands)
+<a id="orgfaf0570"></a>
 
-> [!WARNING]
-> Unstable and pre-release builds of Emacs -- which end in `.50`, `.60`, or
-> `.9X` (e.g. `28.1.91`) -- **are not officially supported**. There *is* some
-> effort to support Emacs HEAD, however. [Follow this Discourse
-> post](https://discourse.doomemacs.org/t/3241) for details.
- 
-> [!IMPORTANT]
-> Doom is comprised of [~150 optional modules][Modules], some of which may have
-> additional dependencies. [Visit their documentation][Modules] or run `bin/doom
-> doctor` to check for any that you may have missed.
+## Helpful resources
+
+Videos and configurations to get started.
+
+-   **[Emacs From Scratch by System Crafters](https://www.youtube.com/watch?v=74zOY-vgkyw&list=PLEoMzSkcN8oPH1au7H6B7bBJ4ZO7BXjSZ):** Very detailed video series about building Gnu Emacs from the ground up.
+-   **[Configuring Emacs by DistroTube](https://www.youtube.com/watch?v=d1fgypEiQkE&list=PL5--8gKSku15e8lXf7aLICFmAHQVo0KXX):** Shorter but also very detailed video series about configuring emacs from scratch.
+-   **[Purcell's emacs configuration](https://github.com/purcell/emacs.d):** Emacs configuration bundle with batteries included.
+-   **[Spacemacs](https://www.spacemacs.org/) and [Doom Emacs](https://github.com/doomemacs/doomemacs):** For an out of box experience and their wiki pages are really helpful.
+-   **[More starter kits](https://www.emacswiki.org/emacs/StarterKits ):** List of starter kits for Emacs.
+-   **[Emacs manual](https://www.gnu.org/software/emacs/manual/html_node/emacs/index.html):** For learning the fundamentals of Emacs.
 
 
-# Install
-``` sh
-git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
-~/.config/emacs/bin/doom install
+<a id="orgb633c86"></a>
+
+# Installation
+
+
+<a id="orgb7bc22f"></a>
+
+## 1. Requirements
+
+-   Gnu Emacs 29.1 (Latest stable release)
+-   Git (To clone/download this repository)
+
+
+### Optional:
+
+-   ripgrep
+-   fd (improves file indexing performance for some commands)
+-   Gnu Emacs with [native-compilation](https://www.emacswiki.org/emacs/GccEmacs) (provides noticeable performance improvements)
+
+
+<a id="org6189661"></a>
+
+## 2. Backup your previous configuration
+
+If any exists.
+
+<a id="org820a205"></a>
+
+## 3. Clone the repository to the configuration location
+
+### Linux and Mac
+```sh
+git clone https://github.com/MiniApollo/kickstart.emacs.git "${XDG_CONFIG_HOME:-$HOME/.config}"/emacs
 ```
 
-Then [read our Getting Started guide][getting-started] to be walked through
-installing, configuring and maintaining Doom Emacs.
+### Windows
 
-It's a good idea to add `~/.config/emacs/bin` to your `PATH`! Other `bin/doom`
-commands you should know about:
+-   **CMD:**
+```sh
+git clone https://github.com/MiniApollo/kickstart.emacs.git %userprofile%\AppData\Local\emacs\
+```
+-   **Powershell:**
+```sh
+git clone https://github.com/MiniApollo/kickstart.emacs.git $env:USERPROFILE\AppData\Local\emacs\
+```
 
-+ `doom sync` to synchronize your private config with Doom by installing missing
-  packages, removing orphaned packages, and regenerating caches. Run this
-  whenever you modify your private `init.el` or `packages.el`, or install/remove
-  an Emacs package through your OS package manager (e.g. mu4e or agda).
-+ `doom upgrade` to update Doom to the latest release & all installed packages.
-+ `doom doctor` to diagnose common issues with your system and config.
-+ `doom env` to dump a snapshot of your shell environment to a file that Doom
-  will load at startup. This allows Emacs to inherit your `PATH`, among other
-  things.
+<a id="orgd77a070"></a>
 
+## 4. Start Emacs
 
-# Roadmap
-Doom is an active and ongoing project. To make that development more
-transparent, its roadmap (and other concerns) are published across three github
-project boards and a newsletter:
+Emacs will install all the requested packages (it can take a minute).
 
-+ [Development Roadmap](https://discourse.doomemacs.org/t/development-roadmap/42):
-  roughly outlines our goals between release milestones and their progress.
-+ [Plugins under review](https://github.com/orgs/doomemacs/projects/5):
-  lists plugins we are watching and considering for inclusion, and what their
-  status for inclusion is. Please consult this list before requesting new
-  packages/features.
-+ [Upstream bugs](https://github.com/orgs/doomemacs/projects/7): lists
-  issues that originate from elsewhere, and whether or not we have local
-  workarounds or temporary fixes for them.
-+ ~~Doom's newsletter~~ (not finished) will contain changelogs in between
-  releases.
-  
+> **Note:**
+> If you see errors, warnings when package installation is finished just restart Emacs.
 
-# Getting help
-Emacs is no journey of a mere thousand miles. You _will_ run into problems and
-mysterious errors. When you do, here are some places you can look for help:
+<a id="org60302a9"></a>
 
-+ [Our documentation][documentation] covers many use cases.
-  + [The Configuration section][configuration] covers how to configure Doom and
-    its packages.
-  + [The Package Management section][package-management] covers how to install
-    and disable packages.
-  + [This section][bin/doom] explains the `bin/doom` script's most important
-    commands.
-  + [This section][common-mistakes] lists some common configuration mistakes new
-    users make, when migrating a config from another distro or their own.
-  + [This answer][change-theme] shows you how to add your own themes to your
-    private config.
-  + [This answer][change-font] shows you how to change the default font.
-  + Your issue may be documented in the [FAQ].
-+ With Emacs built-in help system documentation is a keystroke away:
-  + For functions: <kbd>SPC h f</kbd> or <kbd>C-h f</kbd>
-  + For variables: <kbd>SPC h v</kbd> or <kbd>C-h v</kbd>
-  + For a keybind: <kbd>SPC h k</kbd> or <kbd>C-h k</kbd>
-  + To search available keybinds: <kbd>SPC h b b</kbd> or <kbd>C-h b b</kbd>
-+ Run `bin/doom doctor` to detect common issues with your development
-  environment and private config.
-+ Check out the [FAQ] or [Discourse FAQs][discourse-faq], in case your question
-  has already been answered.
-+ Search [Doom's issue tracker](https://github.com/doomemacs/doomemacs/issues) in case your issue was already
-  reported.
-+ Hop on [our Discord server][discord]; it's active and friendly! Keep an eye on
-  the #announcements channel, where I announce breaking updates and releases.
+# Post Installation
 
+<a id="org87d8fc9"></a>
 
-# Contribute
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com) 
-[![Elisp styleguide](https://img.shields.io/badge/elisp-style%20guide-purple?style=flat-square)](https://github.com/bbatsov/emacs-lisp-style-guide)
-[![Donate on liberapay](https://img.shields.io/badge/liberapay-donate-1.svg?style=flat-square&logo=liberapay&color=blue)][liberapay]
-[![Donate on paypal](https://img.shields.io/badge/paypal-donate-1?style=flat-square&logo=paypal&color=blue)][paypal]
+## 1. Install fonts
 
-Doom is a labor of love and incurable madness, but I'm only one guy. Doom
-wouldn't be where it is today without your help. I welcome contributions of any
-kind!
+Run the following command with M-x (alt-x) C-y to paste
 
-+ I :heart: pull requests and bug reports (see the [Contributing
-  Guidelines][contribute])!
-+ Don't hesitate to [tell me my Elisp-fu
-  sucks](https://github.com/doomemacs/doomemacs/issues/new/choose), but please
-  tell me why.
-+ Hop on [our Discord server][Discord] and say hi! Help others, hang out or talk
-  to me about Emacs, gamedev, programming, physics, pixel art, anime, gaming --
-  anything you like. Nourish this lonely soul.
-+ If you'd like to support my work financially, buy me a drink through
-  [liberapay] or [paypal]. My work contends with studies, adventures in indie
-  gamedev and freelance work. Donations help me allocate more time to my Emacs
-  and OSS capers.
+```sh
+nerd-icons-install-fonts
+```
 
+Change or install JetBrains Mono font
 
-[contribute]: docs/contributing.org
-[discord]: https://doomemacs.org/discord
-[discourse]: https://discourse.doomemacs.org
-[discourse-faq]: https://discourse.doomemacs.org/tag/faq
-[documentation]: docs/index.org
-[faq]: https://github.com/hlissner/doom-emacs/blob/master/docs/faq.org
-[getting-started]: docs/getting_started.org
-[install]: docs/getting_started.org#install
-[backtrace]: docs/getting_started.org#how-to-extract-a-backtrace-from-an-error
-[configuration]: docs/getting_started.org#configuring-doom
-[package-management]: docs/getting_started.org#package-management
-[bin/doom]: docs/getting_started.org#the-bindoom-utility
-[common-mistakes]: docs/getting_started.org#common-mistakes-when-configuring-doom-emacs
-[change-theme]: docs/faq.org#how-do-i-change-the-theme
-[change-font]: docs/faq.org#how-do-i-change-the-fonts
-[modules]: docs/modules.org
-[popup-system]: modules/ui/popup/README.org
-[screenshots]: https://github.com/doomemacs/doomemacs/tree/screenshots#emacsd-screenshots
+<a id="org94fe140"></a>
 
-[bindings]: modules/config/default/+evil-bindings.el
-[editorconfig]: http://editorconfig.org/
-[evil-mode]: https://github.com/emacs-evil/evil
-[fd]: https://github.com/sharkdp/fd
-[gnu emacs]: https://www.gnu.org/software/emacs/
-[helm]: https://github.com/emacs-helm/helm
-[ivy]: https://github.com/abo-abo/swiper
-[lsp-mode]: https://github.com/emacs-lsp/lsp-mode
-[eglot]: https://github.com/joaotavora/eglot
-[nix]: https://nixos.org
-[ported-vim-plugins]: modules/editor/evil/README.org#ported-vim-plugins
-[ripgrep]: https://github.com/BurntSushi/ripgrep
-[straight.el]: https://github.com/radian-software/straight.el
-[vim-easymotion]: https://github.com/easymotion/vim-easymotion
-[vim-lion]: https://github.com/tommcdo/vim-lion
-[vim-sneak]: https://github.com/justinmk/vim-sneak
-[vim-unimpaired]: https://github.com/tpope/vim-unimpaired
+## 2. Open the configuration file
 
-[liberapay]: https://liberapay.com/hlissner/donate
-[paypal]: https://paypal.me/henriklissner/10
+1.  Hit Space-f-c to open the config file at $HOME/.config/emacs
+
+> **Note**
+> If you use Windows you need to change the path (hit C-x C-f, find the config file and in general region replace the path)
+
+2.  Now you can Edit and add more configuration.
+
+<a id="org23b14b0"></a>
+
+## 3. Fork the repository
+
+Recommended so that you have your own copy to modify.
+
+<a id="org14852f4"></a>
+
+# Uninstallation
+
+To uninstall kickstart.emacs, you need to remove the following directory:
+
+-   Delete the emacs folder/directory for your OS (E.g. $HOME/.config/emacs/).
+
+<a id="orgc18728a"></a>
+
+# Gallery
+
+![Emacs_KickStarter](https://github.com/MiniApollo/kickstart.emacs/assets/72389030/b82bb86b-ce49-4b0a-8fe7-2ca8b8c422fb)
+![Kickstart_coding](https://github.com/MiniApollo/kickstart.emacs/assets/72389030/8e560d2b-78f5-4306-8f6a-c70ad189f181)
