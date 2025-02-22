@@ -25,14 +25,14 @@ keybinds clear-defaults=true {
         bind "down" { MoveFocus "down"; }
         bind "up" { MoveFocus "up"; }
         bind "right" { MoveFocus "right"; }
-        bind "c" { SwitchToMode "renamepane"; PaneNameInput 0; }
+        bind "d" { SwitchToMode "renamepane"; PaneNameInput 0; }
         bind "d" { NewPane "down"; SwitchToMode "locked"; }
-        bind "e" { TogglePaneEmbedOrFloating; SwitchToMode "locked"; }
+        bind "i" { TogglePaneEmbedOrFloating; SwitchToMode "locked"; }
         bind "f" { ToggleFocusFullscreen; SwitchToMode "locked"; }
-        bind "h" { MoveFocus "left"; }
+        bind "c" { MoveFocus "left"; }
         bind "a" { MoveFocus "down"; }
         bind "o" { MoveFocus "up"; }
-        bind "i" { MoveFocus "right"; }
+        bind "e" { MoveFocus "right"; }
         bind "n" { NewPane; SwitchToMode "locked"; }
         bind "p" { SwitchToMode "normal"; }
         bind "r" { NewPane "right"; SwitchToMode "locked"; }
@@ -58,10 +58,10 @@ keybinds clear-defaults=true {
         bind "[" { BreakPaneLeft; SwitchToMode "locked"; }
         bind "]" { BreakPaneRight; SwitchToMode "locked"; }
         bind "b" { BreakPane; SwitchToMode "locked"; }
-        bind "h" { GoToPreviousTab; }
+        bind "d" { GoToPreviousTab; }
         bind "a" { GoToNextTab; }
         bind "o" { GoToPreviousTab; }
-        bind "i" { GoToNextTab; }
+        bind "e" { GoToNextTab; }
         bind "n" { NewTab; SwitchToMode "locked"; }
         bind "r" { SwitchToMode "renametab"; TabNameInput 0; }
         bind "s" { ToggleActiveSyncTab; SwitchToMode "locked"; }
@@ -77,14 +77,14 @@ keybinds clear-defaults=true {
         bind "+" { Resize "Increase"; }
         bind "-" { Resize "Decrease"; }
         bind "=" { Resize "Increase"; }
-        bind "H" { Resize "Decrease left"; }
+        bind "C" { Resize "Decrease left"; }
         bind "A" { Resize "Decrease down"; }
         bind "O" { Resize "Decrease up"; }
-        bind "I" { Resize "Decrease right"; }
-        bind "h" { Resize "Increase left"; }
+        bind "E" { Resize "Decrease right"; }
+        bind "c" { Resize "Increase left"; }
         bind "a" { Resize "Increase down"; }
         bind "o" { Resize "Increase up"; }
-        bind "i" { Resize "Increase right"; }
+        bind "e" { Resize "Increase right"; }
         bind "r" { SwitchToMode "normal"; }
     }
     move {
@@ -92,10 +92,10 @@ keybinds clear-defaults=true {
         bind "down" { MovePane "down"; }
         bind "up" { MovePane "up"; }
         bind "right" { MovePane "right"; }
-        bind "h" { MovePane "left"; }
+        bind "c" { MovePane "left"; }
         bind "a" { MovePane "down"; }
         bind "o" { MovePane "up"; }
-        bind "i" { MovePane "right"; }
+        bind "e" { MovePane "right"; }
         bind "m" { SwitchToMode "normal"; }
         bind "n" { MovePane; }
         bind "p" { MovePaneBackwards; }
@@ -157,11 +157,11 @@ keybinds clear-defaults=true {
         bind "Alt [" { PreviousSwapLayout; }
         bind "Alt ]" { NextSwapLayout; }
         bind "Alt f" { ToggleFloatingPanes; }
-        bind "Alt h" { MoveFocusOrTab "left"; }
-        bind "Alt w" { MoveTab "left"; }
+        bind "Alt c" { MoveFocusOrTab "left"; }
+        bind "Alt g" { MoveTab "left"; }
         bind "Alt a" { MoveFocus "down"; }
         bind "Alt o" { MoveFocus "up"; }
-        bind "Alt i" { MoveFocusOrTab "right"; }
+        bind "Alt e" { MoveFocusOrTab "right"; }
         bind "Alt n" { NewPane; }
         bind "Alt u" { MoveTab "right"; }
     }
@@ -204,10 +204,10 @@ keybinds clear-defaults=true {
         bind "Ctrl c" { ScrollToBottom; SwitchToMode "locked"; }
         bind "d" { HalfPageScrollDown; }
         bind "Ctrl f" { PageScrollDown; }
-        bind "h" { PageScrollUp; }
+        bind "c" { PageScrollUp; }
         bind "a" { ScrollDown; }
         bind "o" { ScrollUp; }
-        bind "i" { PageScrollDown; }
+        bind "e" { PageScrollDown; }
         bind "u" { HalfPageScrollUp; }
     }
     entersearch {
@@ -279,7 +279,7 @@ default_mode "locked"
 // The name of the default layout to load on startup
 // Default: "default"
 // 
-// default_layout "compact"
+default_layout "compact"
  
 // The folder in which Zellij will look for layouts
 // (Requires restart)

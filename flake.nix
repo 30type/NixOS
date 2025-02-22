@@ -5,17 +5,11 @@
     |  |  |     | \| | / \ \__/ .__/    |    |___ /~~\ |  \ |___ 
   ";
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-24.11";
-    stylix.url = "github:danth/stylix";
-    hyprpanel = {
-      url = "github:Jas-SinghFSU/HyprPanel";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nixpkgs.url = "nixpkgs/nixos-unstable";
   };
 
   outputs = {
     nixpkgs,
-    stylix,
     ...
   }@inputs:
   let
@@ -28,7 +22,6 @@
           inherit inputs;
         };
         modules = [
-          {nixpkgs.overlays = [inputs.hyprpanel.overlay];}
           ./hosts/desktop/configuration.nix
         ];
       }
@@ -40,7 +33,6 @@
           inherit inputs;
         };
         modules = [
-          inputs.stylix.nixosModules.stylix
           ./hosts/ideapad/configuration.nix
         ];
       }

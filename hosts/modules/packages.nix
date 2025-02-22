@@ -28,5 +28,6 @@
     qutebrowser
     gimp
     flatpak
+    reaper
   ];
 }

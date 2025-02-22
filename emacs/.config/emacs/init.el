@@ -21,101 +21,147 @@
 (add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'start/org-babel-tangle-config)))
 
 (require 'use-package-ensure) ;; Load use-package-always-ensure
-(setq use-package-always-ensure t) ;; Always ensures that a package is installed
-(setq package-archives '(("melpa" . "https://melpa.org/packages/") ;; Sets default package repositories
-                         ("org" . "https://orgmode.org/elpa/")
-                         ("elpa" . "https://elpa.gnu.org/packages/")
-                         ("nongnu" . "https://elpa.nongnu.org/nongnu/"))) ;; For Eat Terminal
+    (setq use-package-always-ensure t) ;; Always ensures that a package is installed
+    (setq package-archives '(("melpa" . "https://melpa.org/packages/") ;; Sets default package repositories
+                             ("org" . "https://orgmode.org/elpa/")
+                             ("elpa" . "https://elpa.gnu.org/packages/")
+                             ("nongnu" . "https://elpa.nongnu.org/nongnu/"))) ;; For Eat T
+(package-initialize)
 
-;; (use-package evil
-;;   :init ;; Execute code Before a package is loaded
-;;   (evil-mode)
-;;   :config ;; Execute code After a package is loaded
-;;   (evil-set-initial-state 'eat-mode 'insert) ;; Set initial state in eat terminal to insert mode
-;;   :custom ;; Customization of package custom variables
-;;   (evil-want-keybinding nil)    ;; Disable evil bindings in other modes (It's not consistent and not good)
-;;   (evil-want-C-u-scroll t)      ;; Set C-u to scroll up
-;;   (evil-want-C-i-jump nil)      ;; Disables C-i jump
-;;   (evil-undo-system 'undo-redo) ;; C-r to redo
-;;   (org-return-follows-link t)   ;; Sets RETURN key in org-mode to follow links
-;;   ;; Unmap keys in 'evil-maps. If not done, org-return-follows-link will not work
-;;   :bind (:map evil-motion-state-map
-;;               ("SPC" . nil)
-;;               ("RET" . nil)
-;;               ("TAB" . nil)))
-;; (use-package evil-collection
-;;   :after evil
-;;   :config
-;;   ;; Setting where to use evil-collection
-;;   (setq evil-collection-mode-list '(dired ibuffer magit corfu vertico consult))
-;;   (evil-collection-init))
-
-;; (use-package general
-;;   :config
-;;   (general-evil-setup)
-;;   ;; Set up 'SPC' as the leader key
-;;   (general-create-definer start/leader-keys
-;;     :states '(normal insert visual motion emacs)
-;;     :keymaps 'override
-;;     :prefix "SPC"           ;; Set leader key
-;;     :global-prefix "C-SPC") ;; Set global leader key
-
-;;   (start/leader-keys
-;;     "." '(find-file :wk "Find file")
-;;     "TAB" '(comment-line :wk "Comment lines")
-;;     "p" '(projectile-command-map :wk "Projectile command map"))
-
-;;   (start/leader-keys
-;;     "f" '(:ignore t :wk "Find")
-;;     "f c" '((lambda () (interactive) (find-file "~/.config/emacs/config.org")) :wk "Edit emacs config")
-;;     "f r" '(consult-recent-file :wk "Recent files")
-;;     "f f" '(consult-fd :wk "Fd search for files")
-;;     "f g" '(consult-ripgrep :wk "Ripgrep search in files")
-;;     "f l" '(consult-line :wk "Find line")
-;;     "f i" '(consult-imenu :wk "Imenu buffer locations"))
-
-;;   (start/leader-keys
-;;     "b" '(:ignore t :wk "Buffer Bookmarks")
-;;     "b b" '(consult-buffer :wk "Switch buffer")
-;;     "b k" '(kill-this-buffer :wk "Kill this buffer")
-;;     "b i" '(ibuffer :wk "Ibuffer")
-;;     "b n" '(next-buffer :wk "Next buffer")
-;;     "b p" '(previous-buffer :wk "Previous buffer")
-;;     "b r" '(revert-buffer :wk "Reload buffer")
-;;     "b j" '(consult-bookmark :wk "Bookmark jump"))
-
-;;   (start/leader-keys
-;;     "d" '(:ignore t :wk "Dired")
-;;     "d v" '(dired :wk "Open dired")
-;;     "d j" '(dired-jump :wk "Dired jump to current"))
-
-;;   (start/leader-keys
-;;     "e" '(:ignore t :wk "Eglot Evaluate")
-;;     "e e" '(eglot-reconnect :wk "Eglot Reconnect")
-;;     "e f" '(eglot-format :wk "Eglot Format")
-;;     "e l" '(consult-flymake :wk "Consult Flymake")
-;;     "e b" '(eval-buffer :wk "Evaluate elisp in buffer")
-;;     "e r" '(eval-region :wk "Evaluate elisp in region"))
-
-;;   (start/leader-keys
-;;     "g" '(:ignore t :wk "Git")
-;;     "g g" '(magit-status :wk "Magit status"))
-
-;;   (start/leader-keys
-;;     "h" '(:ignore t :wk "Help") ;; To get more help use C-h commands (describe variable, function, etc.)
-;;     "h q" '(save-buffers-kill-emacs :wk "Quit Emacs and Daemon")
-;;     "h r" '((lambda () (interactive)
-;;               (load-file "~/.config/emacs/init.el"))
-;;             :wk "Reload Emacs config"))
-
-;;   (start/leader-keys
-;;     "s" '(:ignore t :wk "Show")
-;;     "s e" '(eat :wk "Eat terminal"))
-
-;;   (start/leader-keys
-;;     "t" '(:ignore t :wk "Toggle")
-;;     "t t" '(visual-line-mode :wk "Toggle truncated lines (wrap)")
-;;     "t l" '(display-line-numbers-mode :wk "Toggle line numbers")))
+(use-package meow)
+(defconst meow-cheatsheet-layout-night
+  '((<TLDE> "`"    "~")
+    (<AE01> "1"    "!")
+    (<AE02> "2"    "@")
+    (<AE03> "3"    "#")
+    (<AE04> "4"    "$")
+    (<AE05> "5"    "%")
+    (<AE06> "6"    "^")
+    (<AE07> "7"    "&")
+    (<AE08> "8"    "*")
+    (<AE09> "9"    "(")
+    (<AE10> "0"    ")")
+    (<AE11> "-"    "_")
+    (<AE12> "="    "+")
+    (<AD01> "q"    "Q")
+    (<AD02> "f"    "F")
+    (<AD03> "l"    "L")
+    (<AD04> "k"    "K")
+    (<AD05> "z"    "Z")
+    (<AD06> "j"    "J")
+    (<AD07> "g"    "G")
+    (<AD08> "o"    "O")
+    (<AD09> "u"    "U")
+    (<AD10> "+"    "=")
+    (<AD11> "["    "{")
+    (<AD12> "]"    "}")
+    (<AC01> "n"    "N")
+    (<AC02> "s"    "S")
+    (<AC03> "h"    "H")
+    (<AC04> "t"    "T")
+    (<AC05> "v"    "V")
+    (<AC06> "y"    "Y")
+    (<AC07> "c"    "C")
+    (<AC08> "a"    "A")
+    (<AC09> "e"    "E")
+    (<AC10> "i"    "I")
+    (<AC11> "'"    "\"")
+    (<AB01> "b"    "B")
+    (<AB02> ";"    ":")
+    (<AB03> "m"    "M")
+    (<AB04> "d"    "D")
+    (<AB05> "."    ">")
+    (<AB06> "p"    "P")
+    (<AB07> "w"    "W")
+    (<AB08> "x"    "X")
+    (<AB09> ","    "<")
+    (<AB10> "/"    "?")
+    (<BKSL> "\\" "|")))
+(defun meow-setup ()
+  (setq meow-cheatsheet-layout meow-cheatsheet-layout-night)
+  (meow-motion-define-key
+   '("a" . meow-next)
+   '("o" . meow-prev)
+   '("<escape>" . ignore))
+  (meow-leader-define-key
+   ;; Use SPC (0-9) for digit arguments.
+   '("1" . meow-digit-argument)
+   '("2" . meow-digit-argument)
+   '("3" . meow-digit-argument)
+   '("4" . meow-digit-argument)
+   '("5" . meow-digit-argument)
+   '("6" . meow-digit-argument)
+   '("7" . meow-digit-argument)
+   '("8" . meow-digit-argument)
+   '("9" . meow-digit-argument)
+   '("0" . meow-digit-argument)
+   '("/" . meow-keypad-describe-key)
+   '("?" . meow-cheatsheet))
+  (meow-normal-define-key
+   '("0" . meow-expand-0)
+   '("9" . meow-expand-9)
+   '("8" . meow-expand-8)
+   '("7" . meow-expand-7)
+   '("6" . meow-expand-6)
+   '("5" . meow-expand-5)
+   '("4" . meow-expand-4)
+   '("3" . meow-expand-3)
+   '("2" . meow-expand-2)
+   '("1" . meow-expand-1)
+   '("-" . negative-argument)
+   '(";" . meow-reverse)
+   '("," . meow-inner-of-thing)
+   '("." . meow-bounds-of-thing)
+   '("[" . meow-beginning-of-thing)
+   '("]" . meow-end-of-thing)
+   '("a" . meow-next)
+   '("A" . meow-next-expand)
+   '("b" . meow-back-word)
+   '("B" . meow-back-symbol)
+   '("c" . meow-left)
+   '("C" . meow-left-expand)
+   '("d" . meow-delete)
+   '("D" . meow-backward-delete)
+   '("e" . meow-right)
+   '("E" . meow-right-expand)
+   '("f" . meow-find)
+   '("g" . meow-cancel-selection)
+   '("G" . meow-grab)
+   '("h" . meow-change)
+   '("i" . meow-insert)
+   '("I" . meow-open-above)
+   '("j" . meow-append)
+   '("J" . meow-open-below)
+   '("k" . meow-block)
+   '("K" . meow-to-block)
+   '("l" . meow-next-word)
+   '("L" . meow-next-symbol)
+   '("m" . meow-join)
+   '("n" . meow-search)
+   '("o" . meow-prev)
+   '("O" . meow-prev-expand)
+   '("p" . meow-yank)
+   '("q" . meow-quit)
+   '("Q" . meow-goto-line)
+   '("r" . meow-replace)
+   '("R" . meow-swap-grab)
+   '("s" . meow-kill)
+   '("t" . meow-till)
+   '("u" . meow-undo)
+   '("U" . meow-undo-in-selection)
+   '("v" . meow-visit)
+   '("w" . meow-mark-word)
+   '("W" . meow-mark-symbol)
+   '("x" . meow-line)
+   '("X" . meow-goto-line)
+   '("y" . meow-save)
+   '("Y" . meow-sync-grab)
+   '("z" . meow-pop-selection)
+   '("'" . repeat)
+   '("<escape>" . ignore)))
+(require 'meow)
+(meow-setup)
+(meow-global-mode 1)
 
 (use-package emacs
       :custom
@@ -134,8 +180,8 @@
       ;;(dired-kill-when-opening-new-dired-buffer t) ;; Dired don't create new buffer
       ;;(recentf-mode t) ;; Enable recent file mode
 
-      ;;(global-visual-line-mode t)           ;; Enable truncated lines
-      ;;(display-line-numbers-type 'relative) ;; Relative line numbers
+      (global-visual-line-mode t)           ;; Enable truncated lines
+      (display-line-numbers-type 'relative) ;; Relative line numbers
       (global-display-line-numbers-mode t)  ;; Display line numbers
 
       (mouse-wheel-progressive-speed nil) ;; Disable progressive speed when scrolling
@@ -162,16 +208,16 @@
 ;;                  (with-current-buffer messages-buffer
 ;;                    (evil-normalize-keymaps))))
 ;;              nil nil t)
-;;      )
+  )
 
 (use-package gruvbox-theme
-  :config
-  (load-theme 'oxocarbon t)) ;; We need to add t to trust this package
+      :config
+      (load-theme 'oxocarbon t)) ;; We need to add t to trust this package
 
 ;; (add-to-list 'default-frame-alist '(alpha-background . 90)) ;; For all new frames henceforth
 
 (set-face-attribute 'default nil
-                    ;; :font "JetBrains Mono" ;; Set your favorite type of font or download JetBrains Mono
+                    :font "Undefined Medium" ;; Set your favorite type of font or download JetBrains Mono
                     :height 120
                     :weight 'medium)
 ;; This sets the default font on all graphical frames created after restarting Emacs.
@@ -231,13 +277,13 @@
 
   :hook
   (org-mode . org-indent-mode) ;; Indent text
-  ;; The following prevents <> from auto-pairing when electric-pair-mode is on.
-  ;; Otherwise, org-tempo is broken when you try to <s TAB...
-  ;;(org-mode . (lambda ()
-  ;;              (setq-local electric-pair-inhibit-predicate
-  ;;                          `(lambda (c)
-  ;;                             (if (char-equal c ?<) t (,electric-pair-inhibit-predicate c))))))
-  )
+   The following prevents <> from auto-pairing when electric-pair-mode is on.
+   Otherwise, org-tempo is broken when you try to <s TAB...
+  (org-mode . (lambda ()
+                (setq-local electric-pair-inhibit-predicate
+                            `(lambda (c)
+                               (if (char-equal c ?<) t (,electric-pair-inhibit-predicate c))))))
+)
 
 (use-package toc-org
   :commands toc-org-enable

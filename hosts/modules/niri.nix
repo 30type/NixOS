@@ -21,11 +21,4 @@
     enable = true;
     extraPortals = [ pkgs.xdg-desktop-portal-gnome pkgs.xdg-desktop-portal-gtk ];
   };
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable  = true;
-    alsa.enable = true;
-    pulse.enable = true;
-    jack.enable = true;
-  };
 }

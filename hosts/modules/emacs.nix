@@ -6,7 +6,7 @@
   };
 
   config = lib.mkIf config.emacs-pgtk.enable {
-    services.emacs.package = pkgs.emacs-pgtk;
+    services.emacs.package = pkgs.emacs29-pgtk;
     services.emacs.enable = true;
 
     nixpkgs.overlays = [

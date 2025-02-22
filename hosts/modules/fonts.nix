@@ -4,15 +4,15 @@
     enableDefaultPackages = true;
     fontDir.enable = true;
     packages = with pkgs; [
-      (pkgs.nerdfonts.override {fonts = [ "NerdFontsSymbolsOnly" "JetBrainsMono" ];})
+      nerd-fonts.symbols-only
       noto-fonts
       noto-fonts-cjk-sans
       twemoji-color-font
-      jetbrains-mono
+      undefined-medium
     ];
 
     fontconfig.defaultFonts = {
-      monospace = [ "JetBrains Mono" "Symbols Nerd Font" ];
+      monospace = [ "Undefined Medium" "Symbols Nerd Font" ];
       emoji = [ "Twitter Color Emoji" ];
     };
   };
