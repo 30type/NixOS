@@ -13,9 +13,9 @@
     stow
 
     # shell utils
+    tmux
     tree
     fastfetch
-    zellij
     neovim
     comma
     fzf

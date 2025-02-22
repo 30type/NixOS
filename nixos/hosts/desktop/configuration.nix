@@ -16,17 +16,11 @@
     ./hardware-configuration.nix
     ../../modules
   ];
-
-  emacs-pgtk.enable =
-    lib.mkOverride 10 true;
-  # Enable automatic login for the user.
-   services.flatpak.enable = true;
-
-  hardware.graphics.enable = true;
-
-
   networking.hostName = "desktop"; # Define your hostname.
 
+  services.flatpak.enable = true;
+
+  hardware.graphics.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
