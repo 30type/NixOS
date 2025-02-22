@@ -14,7 +14,7 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ../modules
+    ../../modules
   ];
 
   emacs-pgtk.enable =

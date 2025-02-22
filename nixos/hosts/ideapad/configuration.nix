@@ -14,7 +14,7 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ../modules
+    ../../modules
   ];
 
   networking.hostName = "ideapad"; # Define your hostname.

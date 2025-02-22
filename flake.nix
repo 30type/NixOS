@@ -22,7 +22,7 @@
           inherit inputs;
         };
         modules = [
-          ./hosts/desktop/configuration.nix
+          ./nixos/hosts/desktop/configuration.nix
         ];
       }
     );
@@ -33,7 +33,7 @@
           inherit inputs;
         };
         modules = [
-          ./hosts/ideapad/configuration.nix
+          ./nixos/hosts/ideapad/configuration.nix
         ];
       }
     );
