@@ -222,7 +222,7 @@ layout {
 // which may be more convenient to use.
 // See the binds section below for more spawn examples.
 spawn-at-startup "foot"
-spawn-at-startup "waybar"
+//spawn-at-startup "waybar"
 spawn-at-startup "swww-daemon"
 spawn-at-startup "vesktop"
 spawn-at-startup "qutebrowser"
