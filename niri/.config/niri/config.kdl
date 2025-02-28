@@ -94,13 +94,20 @@ input {
     // automatically.
     position x=1280 y=0
 }
+cursor {
+    xcursor-theme "Bibata-Modern-Ice"
+    xcursor-size 36
+
+    hide-when-typing
+    hide-after-inactive-ms 1000
+}
 
 // Settings that influence how windows are positioned and sized.
 // Find more information on the wiki:
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Layout
 layout {
     // Set gaps around windows in logical pixels.
-    gaps 12
+    gaps 6
 
     // When to center a column when changing focus, options are:
     // - "never", default behavior, focusing an off-screen column will keep at the left

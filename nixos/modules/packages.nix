@@ -17,17 +17,20 @@
     tree
     fastfetch
     neovim
+    helix
     comma
     fzf
     ripgrep
 
     # gui apps
     libreoffice-qt6
-    goofcord
+    vesktop
     vial
     qutebrowser
     gimp
     flatpak
-    reaper
+
+    waybar
+    bibata-cursors
   ];
 }

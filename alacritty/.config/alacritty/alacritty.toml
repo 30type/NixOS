@@ -1,0 +1,17 @@
+
+[window]
+dynamic_padding = true
+decorations = "None"
+
+[general]
+import = [
+"~/.config/alacritty/oxocarbon.toml",
+"~/.config/alacritty/keybindings.toml",
+]
+
+[scrolling]
+history = 100000
+
+[font]
+normal = { style = "bold" }
+size = 12
