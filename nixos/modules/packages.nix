@@ -17,7 +17,6 @@
     tree
     fastfetch
     neovim
-    helix
     comma
     fzf
     ripgrep

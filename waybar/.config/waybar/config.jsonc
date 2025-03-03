@@ -9,7 +9,6 @@
   "mod": "dock",
   "exclusive": true,
   "passthrough": false,
-  "gtk-layer-shell": true,
   "reload_style_on_change": true,
   "height": 42,
   "tray": {
@@ -19,13 +18,12 @@
       "discord": "discord",
     },
   },
-  "modules-left": ["custom/logo"],
+  "modules-left": ["clock"],
   "modules-center": [],
   "modules-right": [
     "pulseaudio",
     "pulseaudio#microphone",
     "battery",
-    "clock",
   ],
   "clock": {
     "format": "{:%I:%M %p}",
@@ -36,7 +34,7 @@
   },
   "custom/logo": {
     "tooltip": false,
-    "format": " 󰣇 ",
+    "format": "  ",
     "on-click": "rofi -show drun",
   },
   "custom/weather": {

@@ -3,7 +3,7 @@
 
 /* Active Color Selection */
 @define-color accent @base0D;
-@define-color logo_color @base05;
+@define-color logo_color @base0B;
 @define-color workspace_active @base0D;
 @define-color workspace_hover @base0F;
 @define-color module_clock @base05;
@@ -14,31 +14,14 @@
 /* Start Waybar Styling */
 * {
     font-family: "ZedMono Nerd Font Propo";
-    font-size: 14.25px;
+    font-size: 12px;
     font-weight: 600;
 }
 
 window#waybar {
-    color: @base05;
-    background: @base01;
-    opacity: 1;
-    border: 1px solid @base02;
-    border-bottom: 1px solid @base00;
-    border-left: 1px solid @base00;
-    border-right: 1px solid @base00;
-}
-
-tooltip {
-    color: @base05;
+    color: @base06;
     background: @base00;
     opacity: 1;
-    border: 2px solid @base01;
-    border-radius: 6px;
-    padding: 0;
-}
-
-#workspaces {
-    padding-left: 5px;
 }
 
 #workspaces button {
@@ -48,33 +31,26 @@ tooltip {
     padding: 10px;
     padding-bottom: 0px;
     padding-top: 0px;
-    border-bottom: 1px solid @base02;
-    border-top: 1px solid @base00;
 }
 
 #workspaces button.active {
     color: @workspace_active;
-    border-top: 2px solid @workspace_active;
     background: @base00;
     padding-bottom: 1px;
 }
 
 #workspaces button.focused {
     color: @base0E;
-    border-top: 2px solid @base0E;
 }
 
 #workspaces button.urgent {
     color: @base0D;
-    border-top: 2px solid @base0D;
     background: @base00;
 }
 
 #workspaces button:hover {
     color: @workspace_hover;
-    border-top: 2px solid @workspace_hover;
     background: @base00;
-    border-bottom: 1px solid @base02;
     padding-bottom: 1px;
 }
 
@@ -90,7 +66,12 @@ tooltip {
     color: @base05;
 }
 
-#clock,
+#clock {
+    padding-left: 20px;
+    padding-right: 10px;
+    padding-top: 3px;
+}
+
 #battery,
 #network,
 #bluetooth,
@@ -99,25 +80,10 @@ tooltip {
 #pulseaudio,
 #pulseaudio.microphone,
 #wlr-taskbar,
-#custom-weather {
-    margin-left: 10px;
-    margin-right: 10px;
-    padding-top: 5px;
-    padding-bottom: 4px;
-    border-top: 1px solid @base02;
-    padding-left: 3px;
-    padding-right: 3px;
-    border-bottom: 0px solid @base01; /* remove @base00 for accent colors */
-}
-
-#tray {
-    padding-right: 10px;
-}
 
 #network {
     padding-right: 5px;
     padding-top: 3px;
-    border-bottom: 2px solid @base00;
 }
 
 #pulseaudio {

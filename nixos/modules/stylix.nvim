@@ -1,5 +1,0 @@
-{ pkgs, stylix, config, ... }:
-{
-  stylix.enable = true;
-  stylix.image = ../wallpapers/cars2.png;
-}
