@@ -29,7 +29,6 @@
     gimp
     flatpak
 
-    waybar
     bibata-cursors
   ];
 }

@@ -17,12 +17,13 @@
     ./networking.nix
     ./niri.nix
     ./nix.nix
+    ./nyxt.nix
     ./packages.nix
     ./qmk.nix
     ./users.nix
-    ./waybar.nix
     ./wezterm.nix
   ];
   config.wezterm.enable = true;
   config.hyprland.enable = true;
+  config.nyxt.enable = true;
 }
